@@ -1,5 +1,8 @@
+\#auto_saved_files\#
+
 #MPLab folders
 *.X/
+
 
 #Ignore Kicad backups and lock files
 *.kicad_sch-bak

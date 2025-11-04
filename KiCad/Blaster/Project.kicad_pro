@@ -617,7 +617,7 @@
       "version": 1
     },
     "net_format_name": "",
-    "page_layout_descr_file": "G:\\My Drive\\KiCad\\ISU_TITLEBLOCK_A.kicad_wks",
+    "page_layout_descr_file": "kicad-embed://ISU_TITLEBLOCK_A.kicad_wks",
     "plot_directory": "",
     "space_save_all_events": true,
     "spice_current_sheet_as_root": false,
@@ -640,11 +640,11 @@
     ],
     [
       "0b035578-8811-407f-9c52-5736444552f1",
-      "Blaster_Bottom"
+      "Microcontroller"
     ],
     [
-      "8de4a48b-32ba-4a48-af33-2fd68ed0db63",
-      "Blaster Top"
+      "f727b983-1be0-41f0-9150-1b1a8c10c4b2",
+      "Communications"
     ]
   ],
   "text_variables": {}

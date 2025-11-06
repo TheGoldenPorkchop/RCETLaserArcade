@@ -3045,22 +3045,10 @@
 		(uuid "254f7b07-c07e-4c6c-8b26-e6bd10d534ea")
 	)
 	(junction
-		(at 156.21 74.93)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2ace6514-cf99-42bd-8256-bcffc0760d1d")
-	)
-	(junction
 		(at 41.91 151.13)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "2c4eb493-41e0-48f9-a773-d92a385eab6e")
-	)
-	(junction
-		(at 157.48 142.24)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "31cea4fe-fc33-4497-b5ba-1e9849b3de1c")
 	)
 	(junction
 		(at 160.02 97.79)
@@ -3087,12 +3075,6 @@
 		(uuid "4749830a-709f-46ee-abc1-17ed540c40e6")
 	)
 	(junction
-		(at 157.48 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4ec6f931-ee54-4523-9cf6-b06775d0c6ba")
-	)
-	(junction
 		(at 68.58 59.69)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3111,12 +3093,6 @@
 		(uuid "58960a8b-d3b9-4da3-9fe5-f7d6d973491b")
 	)
 	(junction
-		(at 209.55 124.46)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "614c2de1-04f8-4ebe-a488-44bd7ca6de40")
-	)
-	(junction
 		(at 44.45 128.27)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -3127,12 +3103,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "6984fd86-9e39-4343-a689-43366a8a2f0a")
-	)
-	(junction
-		(at 212.09 59.69)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "6a62e470-cffc-46bb-b826-6c48482424c0")
 	)
 	(junction
 		(at 57.15 107.95)
@@ -3175,12 +3145,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "8e61ca7e-2216-48ef-92e4-d1909804c28f")
-	)
-	(junction
-		(at 158.75 67.31)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "9f4360bb-b8f9-4b99-82b2-aeb64e50cc53")
 	)
 	(junction
 		(at 120.65 50.8)
@@ -3396,16 +3360,6 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 60.96) (xy 212.09 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "09dfe013-38eb-48e4-a963-5e30ca2832d6")
-	)
-	(wire
-		(pts
 			(xy 119.38 109.22) (xy 118.11 109.22)
 		)
 		(stroke
@@ -3596,7 +3550,7 @@
 	)
 	(wire
 		(pts
-			(xy 158.75 124.46) (xy 157.48 124.46)
+			(xy 156.21 124.46) (xy 158.75 124.46)
 		)
 		(stroke
 			(width 0)
@@ -3613,16 +3567,6 @@
 			(type default)
 		)
 		(uuid "2347b05d-e9b3-4c48-a6ba-6fc49461e4bd")
-	)
-	(wire
-		(pts
-			(xy 158.75 142.24) (xy 157.48 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "25fd5e7b-c533-4735-9511-7f0ccbc84beb")
 	)
 	(wire
 		(pts
@@ -3733,16 +3677,6 @@
 			(type default)
 		)
 		(uuid "38f13f64-7b6c-4060-80d8-608647d48137")
-	)
-	(wire
-		(pts
-			(xy 158.75 67.31) (xy 160.02 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3a7f7c19-4375-4875-999d-d52d6606629c")
 	)
 	(wire
 		(pts
@@ -3976,16 +3910,6 @@
 	)
 	(wire
 		(pts
-			(xy 209.55 124.46) (xy 208.28 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "678de6bb-de78-4bb4-b4d1-bfe81b9298d5")
-	)
-	(wire
-		(pts
 			(xy 57.15 148.59) (xy 58.42 148.59)
 		)
 		(stroke
@@ -4053,16 +3977,6 @@
 			(type default)
 		)
 		(uuid "7a12f49e-6aa8-437a-ba70-503effbab7e5")
-	)
-	(wire
-		(pts
-			(xy 158.75 67.31) (xy 158.75 68.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7a1e7b82-10a1-48d3-b8b3-3583a24bf68c")
 	)
 	(wire
 		(pts
@@ -4136,26 +4050,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 74.93) (xy 157.48 74.93)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8885cb72-e8df-4149-accb-4402de7de371")
-	)
-	(wire
-		(pts
-			(xy 209.55 123.19) (xy 209.55 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "88a21787-a43b-40ae-bf1b-ffd97b676cec")
-	)
-	(wire
-		(pts
 			(xy 196.85 97.79) (xy 199.39 97.79)
 		)
 		(stroke
@@ -4206,16 +4100,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 123.19) (xy 157.48 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "94e08141-1596-4ce8-af11-54c1de9e0f89")
-	)
-	(wire
-		(pts
 			(xy 57.15 185.42) (xy 58.42 185.42)
 		)
 		(stroke
@@ -4223,16 +4107,6 @@
 			(type default)
 		)
 		(uuid "96a47637-697c-460c-ba1a-22e1c444913b")
-	)
-	(wire
-		(pts
-			(xy 157.48 124.46) (xy 156.21 124.46)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "97e4e010-da75-4c28-9217-b8550321ea36")
 	)
 	(wire
 		(pts
@@ -4346,16 +4220,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 140.97) (xy 157.48 142.24)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a4e125ef-ef05-4d9a-a29e-0efca2c362b8")
-	)
-	(wire
-		(pts
 			(xy 209.55 140.97) (xy 209.55 142.24)
 		)
 		(stroke
@@ -4406,7 +4270,7 @@
 	)
 	(wire
 		(pts
-			(xy 210.82 124.46) (xy 209.55 124.46)
+			(xy 208.28 124.46) (xy 210.82 124.46)
 		)
 		(stroke
 			(width 0)
@@ -4433,16 +4297,6 @@
 			(type default)
 		)
 		(uuid "b2cc3b1d-dd27-4cef-9886-691873c25223")
-	)
-	(wire
-		(pts
-			(xy 208.28 59.69) (xy 212.09 59.69)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b3a50110-740e-4116-bfe3-362fedc651a6")
 	)
 	(wire
 		(pts
@@ -4636,16 +4490,6 @@
 	)
 	(wire
 		(pts
-			(xy 153.67 67.31) (xy 158.75 67.31)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d5066e9a-64b7-4573-90c8-6c4a9ed89372")
-	)
-	(wire
-		(pts
 			(xy 44.45 180.34) (xy 44.45 153.67)
 		)
 		(stroke
@@ -4706,7 +4550,7 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 142.24) (xy 156.21 142.24)
+			(xy 156.21 142.24) (xy 158.75 142.24)
 		)
 		(stroke
 			(width 0)
@@ -4796,7 +4640,7 @@
 	)
 	(wire
 		(pts
-			(xy 212.09 59.69) (xy 220.98 59.69)
+			(xy 208.28 59.69) (xy 220.98 59.69)
 		)
 		(stroke
 			(width 0)
@@ -4964,6 +4808,36 @@
 		)
 		(uuid "ffe1f1ee-865f-4bb2-b83e-a709f3e76e55")
 	)
+	(label "MCLR"
+		(at 76.2 25.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7e50aba7-986a-42c8-a966-2c9dffac8750")
+	)
+	(label "SDA"
+		(at 49.53 82.55 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "93ac23f4-8e01-4c2a-8ae0-f60ae9bef1b9")
+	)
+	(label "SCL"
+		(at 49.53 80.01 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a6448b1f-2b42-4ece-a31d-f6bc05806f1e")
+	)
 	(global_label "RX"
 		(shape input)
 		(at 74.93 33.02 0)
@@ -5098,7 +4972,7 @@
 	)
 	(global_label "DIR"
 		(shape output)
-		(at 160.02 67.31 0)
+		(at 153.67 67.31 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5108,7 +4982,7 @@
 		)
 		(uuid "71979d44-c4f9-4831-813b-259c9d6d430c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 165.7556 67.31 0)
+			(at 159.4056 67.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5348,7 +5222,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "01c2af80-2eca-4cbd-9895-ef5c291e43f6")
-		(property "Reference" "TP12"
+		(property "Reference" "TP9"
 			(at 174.498 107.188 90)
 			(do_not_autoplace yes)
 			(effects
@@ -5398,7 +5272,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP12")
+					(reference "TP9")
 					(unit 1)
 				)
 			)
@@ -5539,71 +5413,6 @@
 		)
 	)
 	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 157.48 140.97 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "0b75d911-774b-413a-8a41-51aac83a03b0")
-		(property "Reference" "TP16"
-			(at 157.48 135.636 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SERVO2"
-			(at 157.48 137.414 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 157.48 140.97 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 157.48 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 157.48 133.35 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "c195bc5f-c875-4aab-babe-25779c69c628")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP16")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "0_AKeller_Parts:Header_1x6")
 		(at 60.96 106.68 0)
 		(unit 1)
@@ -5630,7 +5439,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x6_100mil_Header"
 			(at 60.96 104.14 0)
 			(effects
 				(font
@@ -5711,7 +5520,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x3_100mil_Header"
 			(at 180.34 100.33 0)
 			(effects
 				(font
@@ -5851,7 +5660,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 67.564 54.864 90)
 			(effects
 				(font
@@ -6192,7 +6001,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x3_100mil_Header"
 			(at 161.29 151.13 0)
 			(effects
 				(font
@@ -6264,7 +6073,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x6_100mil_Header"
 			(at 60.96 154.94 0)
 			(effects
 				(font
@@ -6397,7 +6206,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "242cfe68-0eb0-4c2c-b2bc-e96ce3d71e01")
-		(property "Reference" "TP15"
+		(property "Reference" "TP10"
 			(at 111.76 121.92 0)
 			(do_not_autoplace yes)
 			(effects
@@ -6447,7 +6256,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP15")
+					(reference "TP10")
 					(unit 1)
 				)
 			)
@@ -6696,7 +6505,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x4_100mil_Header"
 			(at 213.36 151.13 0)
 			(effects
 				(font
@@ -6771,7 +6580,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 185.166 77.724 90)
 			(effects
 				(font
@@ -6889,7 +6698,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2f3522ee-b078-4f1b-88d7-57937f7c6a05")
-		(property "Reference" "TP8"
+		(property "Reference" "TP5"
 			(at 180.34 86.36 0)
 			(do_not_autoplace yes)
 			(effects
@@ -6939,7 +6748,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP8")
+					(reference "TP5")
 					(unit 1)
 				)
 			)
@@ -7248,7 +7057,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x3_100mil_Header"
 			(at 161.29 133.35 0)
 			(effects
 				(font
@@ -7630,71 +7439,6 @@
 		)
 	)
 	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 212.09 60.96 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "566f4797-2b34-4b74-a3f8-933e271f9144")
-		(property "Reference" "TP3"
-			(at 212.09 64.77 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "RGB_OUT"
-			(at 212.09 66.548 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 212.09 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 212.09 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 212.09 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1769077b-8d6f-4a7a-8cd1-7554a34e352c")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 137.16 146.05 0)
 		(unit 1)
@@ -7890,71 +7634,6 @@
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
 					(reference "#PWR013")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 209.55 123.19 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5f13092f-8767-4894-9422-2dc870c338c0")
-		(property "Reference" "TP14"
-			(at 209.55 117.856 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SERVO3"
-			(at 209.55 119.634 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 209.55 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 209.55 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 209.55 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4ebe439c-e2e3-4ce2-915e-f5f8e5014688")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP14")
 					(unit 1)
 				)
 			)
@@ -8259,7 +7938,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x6_100mil_Header"
 			(at 60.96 129.54 0)
 			(effects
 				(font
@@ -8405,7 +8084,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 188.214 58.674 90)
 			(effects
 				(font
@@ -8926,71 +8605,6 @@
 		)
 	)
 	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 157.48 74.93 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "8a66b849-9a60-41e6-8eab-6552556834ea")
-		(property "Reference" "TP7"
-			(at 162.052 74.676 90)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "CLK"
-			(at 162.052 76.2 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 157.48 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 165.1 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 165.1 74.93 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a3ec1b20-799f-46bb-b642-7a16521ea7bc")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP7")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "Libraries:+5V")
 		(at 99.06 125.73 0)
 		(unit 1)
@@ -9486,7 +9100,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x3_100mil_Header_Locking"
 			(at 223.52 66.04 0)
 			(effects
 				(font
@@ -9526,71 +9140,6 @@
 			(project ""
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
 					(reference "J2")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 158.75 68.58 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "a46fe91b-b81d-4190-98bd-1d3647936282")
-		(property "Reference" "TP6"
-			(at 161.544 70.358 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "DIR"
-			(at 161.29 71.882 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 158.75 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 158.75 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 158.75 76.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3aa1ce6d-6005-4d9c-8628-0507242b6782")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -9672,7 +9221,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "a9bce9a5-cb2f-48fa-ab2a-199a474b21cf")
-		(property "Reference" "TP9"
+		(property "Reference" "TP6"
 			(at 160.02 91.186 0)
 			(do_not_autoplace yes)
 			(effects
@@ -9722,7 +9271,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP9")
+					(reference "TP6")
 					(unit 1)
 				)
 			)
@@ -9755,7 +9304,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_AKeller_Footprints:Diode_0805"
+		(property "Footprint" "Diode_SMD:D_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 76.2 59.69 0)
 			(effects
 				(font
@@ -9911,7 +9460,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 112.776 147.574 90)
 			(effects
 				(font
@@ -10029,7 +9578,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "cfd45872-1511-45d6-a47f-479d2c084b69")
-		(property "Reference" "TP4"
+		(property "Reference" "TP3"
 			(at 176.022 64.77 90)
 			(do_not_autoplace yes)
 			(effects
@@ -10079,7 +9628,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP4")
+					(reference "TP3")
 					(unit 1)
 				)
 			)
@@ -10293,7 +9842,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d8fe3474-b33e-4e9f-b386-57dfaa373a59")
-		(property "Reference" "TP5"
+		(property "Reference" "TP4"
 			(at 189.992 64.77 90)
 			(do_not_autoplace yes)
 			(effects
@@ -10343,7 +9892,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP5")
+					(reference "TP4")
 					(unit 1)
 				)
 			)
@@ -10446,7 +9995,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x3_100mil_Header"
 			(at 213.36 133.35 0)
 			(effects
 				(font
@@ -10586,7 +10135,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 171.196 77.724 90)
 			(effects
 				(font
@@ -10655,7 +10204,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:1x6_100mil_Header"
 			(at 60.96 181.61 0)
 			(effects
 				(font
@@ -10718,7 +10267,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e6d364a8-a6b3-4185-af92-1c19c4684855")
-		(property "Reference" "TP10"
+		(property "Reference" "TP7"
 			(at 49.53 93.98 0)
 			(do_not_autoplace yes)
 			(effects
@@ -10768,7 +10317,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP10")
+					(reference "TP7")
 					(unit 1)
 				)
 			)
@@ -10850,7 +10399,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ea9a6b73-7b94-4fae-a175-1b81d285ef1b")
-		(property "Reference" "TP11"
+		(property "Reference" "TP8"
 			(at 49.53 107.696 0)
 			(do_not_autoplace yes)
 			(effects
@@ -10900,7 +10449,7 @@
 		(instances
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP11")
+					(reference "TP8")
 					(unit 1)
 				)
 			)
@@ -11167,71 +10716,6 @@
 			(project "Target_Slave"
 				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
 					(reference "#+5V06")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "0_AKeller_Parts:Test_Point")
-		(at 157.48 123.19 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "f83b0489-ebd7-49a8-a725-e8f6a83e951c")
-		(property "Reference" "TP13"
-			(at 157.48 117.856 0)
-			(do_not_autoplace yes)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SERVO1"
-			(at 157.48 119.634 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "0_AKeller_Footprints:1x1_100mil_Header"
-			(at 157.48 123.19 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 157.48 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 157.48 115.57 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ceb6f997-9e88-4263-a793-4a4a6e5a8b27")
-		)
-		(instances
-			(project "Target_Slave"
-				(path "/03af772b-60fb-487b-9520-87184ee0dc08"
-					(reference "TP13")
 					(unit 1)
 				)
 			)

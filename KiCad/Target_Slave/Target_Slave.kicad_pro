@@ -37,9 +37,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 0.508,
-          "height": 1.4,
-          "width": 1.2
+          "drill": 3.81,
+          "height": 7.112,
+          "width": 7.112
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -60,139 +60,59 @@
       ],
       "drc_exclusions": [
         [
-          "copper_edge_clearance|186143900|115646200|6fb0e486-9c8b-47da-b7bc-f10dc8e9cf72|b9ecd999-921e-41d5-88aa-d3df8e5d0c11",
+          "lib_footprint_mismatch|187731000|72390000|84d12e69-81a5-4699-b254-b92867aed556|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|186143900|117170200|6fb0e486-9c8b-47da-b7bc-f10dc8e9cf72|4252fb50-912b-40b1-b029-ca975517c49a",
+          "lib_footprint_mismatch|187731000|77470000|8a2b003d-a665-4c9b-9043-c402b0fbf1eb|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|186143900|95351600|aaa2f644-87a9-4e21-8233-76e7fa538a71|bf5ab7f8-f1ea-41e2-8df6-3f1c8d6a0420",
+          "lib_footprint_mismatch|192532000|67059500|79896194-b7db-4a8e-b56c-050c2d84633f|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|186143900|96875600|aaa2f644-87a9-4e21-8233-76e7fa538a71|ff1127ec-e2e0-4e6e-96b3-43d54b563d72",
+          "lib_footprint_mismatch|196342000|67069500|95b9b54f-7f1c-47b4-9b05-3a7fd67810b7|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|189776100|115646200|6fb0e486-9c8b-47da-b7bc-f10dc8e9cf72|b5001019-825e-4923-a13b-2979e4312543",
+          "lib_footprint_mismatch|197887500|87884000|99b80e27-aa2b-47fd-bec5-06dc041d7a21|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|189776100|117170200|6fb0e486-9c8b-47da-b7bc-f10dc8e9cf72|2d852ad8-c40d-4a37-88ac-0ec0e227aee1",
+          "lib_footprint_mismatch|213614000|75184000|06cc5988-ff56-471b-a30e-a34da14badb2|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|189776100|95351600|aaa2f644-87a9-4e21-8233-76e7fa538a71|cb9aa9f1-a384-4fd6-8160-49735922b995",
+          "lib_footprint_mismatch|224298000|58547000|656f10df-502f-4c05-a3ae-b39d11817ba4|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|189776100|97688400|aaa2f644-87a9-4e21-8233-76e7fa538a71|5b27e6e5-ca20-4506-915b-88278bc11096",
+          "lib_footprint_mismatch|224557500|73025000|35a91141-9bff-4c92-8104-e70f4bd7203e|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|221703900|115671600|3ed6e389-3677-40e7-b9e4-5777b658c3c6|f7284d99-fc87-41d1-831c-898d8a48ae72",
+          "lib_footprint_mismatch|224806000|64897000|4277ac81-c0ec-43f7-be94-6b7b8577fd2a|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|221703900|117195600|3ed6e389-3677-40e7-b9e4-5777b658c3c6|76c5e4ef-3eef-4ad2-882f-18dd7e99ddfd",
+          "lib_footprint_mismatch|233912500|69850000|5ec72f50-8f39-4eec-b802-d881b5a76e2b|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|221703900|95351600|17b89ab1-043a-49f9-af79-9a8580f45f18|7861cab9-b73a-44da-aa65-dd18f0c6dc17",
+          "lib_footprint_mismatch|233912500|81280000|8b1d070e-2500-4cee-acba-f1dc4cc2fe11|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|221703900|96875600|17b89ab1-043a-49f9-af79-9a8580f45f18|9d845d8b-c013-4418-b935-cca357a33b19",
+          "lib_footprint_mismatch|233912500|88900000|a1eb2b48-d80f-4457-aaf7-174a8126be81|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|225336100|115671600|3ed6e389-3677-40e7-b9e4-5777b658c3c6|b910be5d-a4da-4523-8467-91e81841feaa",
+          "lib_footprint_mismatch|234950000|63859500|eb8fbecb-d4b8-4b5a-9963-912d4e057230|00000000-0000-0000-0000-000000000000",
           ""
         ],
         [
-          "copper_edge_clearance|225336100|117195600|3ed6e389-3677-40e7-b9e4-5777b658c3c6|3b4d31de-71d6-4503-b3e4-ef1451875510",
-          ""
-        ],
-        [
-          "copper_edge_clearance|225336100|95351600|17b89ab1-043a-49f9-af79-9a8580f45f18|d90be619-fe80-43b5-b071-7abe8ca310b5",
-          ""
-        ],
-        [
-          "copper_edge_clearance|225336100|96875600|17b89ab1-043a-49f9-af79-9a8580f45f18|e57d2948-b8ff-49d6-bedc-6acf1f655482",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|178435000|111502100|22762efd-7429-4d61-b6f4-121ca80ef86b|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|179070000|127000000|614ea4ab-00fc-4475-bd42-2d06987744fc|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|182245000|111502100|a3d00ffb-730a-4959-8907-92c6f9025795|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|182880000|127000000|b5150621-86cf-48ec-b57e-2773a7ed3cd8|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|186055000|104410000|12b66f1e-2d7a-4d98-94a2-f75b328c5e14|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|186690000|127000000|e788b2f4-04a1-46b6-b5ff-f6db12847bd6|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|190500000|127000000|c3d1cf9d-5d21-4018-89da-b60a89c03276|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|194945000|111459100|8269775b-fa67-4bcf-ad15-940eeea68972|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|203200000|96520000|026b2c89-274e-4aed-85b5-5b3249557feb|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|205740000|103602700|213fdda1-2c15-4a2a-b7e8-6482c6daf91b|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|213360000|96520000|cc22f846-585e-4d99-8e2e-5cf3a3e6bc78|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|219760800|104140000|3feda6e3-7374-4d59-8c48-c3649e69341b|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|219760800|107950000|b56b7917-b067-4b55-aeea-0b82d45cbb3e|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|219760800|111760000|eddc54c0-ca92-4dcd-b34d-802ad3c1a308|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|220980000|127000000|77cf07ba-034d-45f6-8c5d-8d0be2acc0d4|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|224790000|127000000|9d13de9b-b658-466a-899c-0ff6962e81a3|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|228600000|127000000|4b42a73f-70b8-49b7-bc69-4319753b11d0|00000000-0000-0000-0000-000000000000",
-          ""
-        ],
-        [
-          "lib_footprint_mismatch|232410000|127000000|ff2b0315-f62c-420d-9ac0-64a5cc7e62f9|00000000-0000-0000-0000-000000000000",
+          "lib_footprint_mismatch|239522000|63859500|dced14af-bfef-4ddc-a27c-b9f8b18c6503|00000000-0000-0000-0000-000000000000",
           ""
         ]
       ],
@@ -642,7 +562,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Slave_Gerbers/",
+      "plot": "Target_Slave_RevB/Gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "../../../../OneDrive/School/ISU/SP25/RCET3375 - Lab/Project/PCB Images/Target_Slave.step",

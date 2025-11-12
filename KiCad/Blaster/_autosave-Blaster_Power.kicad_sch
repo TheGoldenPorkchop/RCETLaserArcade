@@ -4355,7 +4355,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_AMASS:AMASS_XT60PW-M_1x02_P7.20mm_Horizontal"
+		(property "Footprint" "0_AKeller_Footprints:AMASS_XT60PW-M_1x02_P7.20mm_Horizontal"
 			(at 38.1 73.66 0)
 			(effects
 				(font

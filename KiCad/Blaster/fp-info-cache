@@ -1,4 +1,4 @@
-26789048284570250
+26790811269727224
 0_AKeller_Footprints
 1x1_100mil_Header
 
@@ -84,12 +84,19 @@ RC Connector XT30
 4
 2
 0_AKeller_Footprints
+AMASS_XT60PW-M_1x02_P7.20mm_Horizontal
+Connector XT60 Horizontal PCB Female, https://www.tme.eu/Document/b13629717d44ae038681dba08d18c0b6/XT60PW-M.pdf
+RC Connector XT60
+0
+4
+2
+0_AKeller_Footprints
 Adafruit_AudioFXMini
 
 
 0
-10
-10
+22
+22
 0_AKeller_Footprints
 Diode_0805
 Diode SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal, (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator
@@ -200,8 +207,8 @@ T80-T
 
 
 0
-0
-0
+5
+3
 0_AKeller_Footprints
 USB_Micro-B_Amphenol
 Micro USB Type B 10103594-0001LF, http://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10103594.pdf

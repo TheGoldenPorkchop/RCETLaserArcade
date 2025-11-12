@@ -688,6 +688,279 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Amplifier_Operational:MCP6002-xMC"
+			(pin_names
+				(offset 0.127)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MCP6002-xMC"
+				(at 0 -5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_DFN_QFN:DFN-8-1EP_3x2mm_P0.5mm_EP1.75x1.45mm"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "1MHz, Low-Power Op Amp, DFN-8"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "dual opamp"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "DFN*1EP*3x2mm*P0.5mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MCP6002-xMC_1_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6002-xMC_2_1"
+				(polyline
+					(pts
+						(xy -5.08 5.08) (xy 5.08 0) (xy -5.08 -5.08) (xy -5.08 5.08)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -7.62 2.54 0)
+					(length 2.54)
+					(name "+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -7.62 -2.54 0)
+					(length 2.54)
+					(name "-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 7.62 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "MCP6002-xMC_3_1"
+				(pin power_in line
+					(at -2.54 7.62 270)
+					(length 3.81)
+					(name "V+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -7.62 90)
+					(length 3.81)
+					(hide yes)
+					(name "V-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Battery_Management:MCP73831-2-OT"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2391,6 +2664,18 @@
 		(color 0 0 0 0)
 		(uuid "fa6f681f-041a-44ff-8b32-2e08776d840e")
 	)
+	(no_connect
+		(at 72.39 139.7)
+		(uuid "661c4af3-457f-4330-96b6-35cde7f25477")
+	)
+	(no_connect
+		(at 87.63 137.16)
+		(uuid "722f825f-df73-4edc-9410-457ba3d34d10")
+	)
+	(no_connect
+		(at 72.39 134.62)
+		(uuid "ec91a1b2-b1db-4adb-b014-40c5c64386c9")
+	)
 	(wire
 		(pts
 			(xy 100.33 95.25) (xy 102.87 95.25)
@@ -3124,7 +3409,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5_HandSoldering"
 			(at 114.3 99.06 0)
 			(effects
 				(font
@@ -3237,6 +3522,74 @@
 			(project "Project"
 				(path "/152b0fc1-fa29-4f64-bd5c-6a59f63b05cf/38ebd531-af64-4884-b365-257c0c7ff7c3"
 					(reference "TP4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 99.06 143.51 0)
+		(mirror y)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1ad385dc-0cbc-4ec7-b759-4df243407e11")
+		(property "Reference" "#PWR019"
+			(at 99.06 149.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 99.06 148.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 99.06 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7975681f-0b50-4ea4-8985-48fde28696de")
+		)
+		(instances
+			(project "Project"
+				(path "/152b0fc1-fa29-4f64-bd5c-6a59f63b05cf/38ebd531-af64-4884-b365-257c0c7ff7c3"
+					(reference "#PWR019")
 					(unit 1)
 				)
 			)
@@ -3405,7 +3758,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 126.6952 105.41 0)
 			(effects
 				(font
@@ -3448,6 +3801,95 @@
 		)
 	)
 	(symbol
+		(lib_id "Amplifier_Operational:MCP6002-xMC")
+		(at 80.01 137.16 0)
+		(mirror x)
+		(unit 2)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2ba857ca-df87-473f-9a50-fdce2bddf901")
+		(property "Reference" "U4"
+			(at 80.01 129.032 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6002"
+			(at 80.01 130.81 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm"
+			(at 80.01 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 80.01 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1MHz, Low-Power Op Amp, DFN-8"
+			(at 80.01 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "5719cf91-415b-466b-8f8d-19d98749e25c")
+		)
+		(pin "4"
+			(uuid "e2a2e5e4-918a-4182-a2a5-5b708f9388ce")
+		)
+		(pin "3"
+			(uuid "82d2af44-5251-4306-a1b9-5eb092f57e11")
+		)
+		(pin "2"
+			(uuid "8832ca51-9827-4658-b7db-7fa8473a31b9")
+		)
+		(pin "1"
+			(uuid "c7410832-acf8-43a8-8d24-0400dabab41b")
+		)
+		(pin "5"
+			(uuid "6aa5362c-9318-4908-9e6c-e70269da6b7b")
+		)
+		(pin "7"
+			(uuid "bedae89f-4e5b-4a1e-934a-0c80707410a6")
+		)
+		(pin "8"
+			(uuid "02a1eb8b-5368-48d7-bd80-5e21076b7696")
+		)
+		(pin "9"
+			(uuid "162a05d0-a98a-464c-a13b-62593e597205")
+		)
+		(instances
+			(project "Project"
+				(path "/152b0fc1-fa29-4f64-bd5c-6a59f63b05cf/38ebd531-af64-4884-b365-257c0c7ff7c3"
+					(reference "U4")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 220.98 114.3 0)
 		(unit 1)
@@ -3474,7 +3916,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 221.996 114.554 90)
 			(effects
 				(font
@@ -3517,6 +3959,94 @@
 		)
 	)
 	(symbol
+		(lib_id "Amplifier_Operational:MCP6002-xMC")
+		(at 101.6 135.89 0)
+		(unit 3)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2df1af4f-ca36-4229-8cc5-331503985713")
+		(property "Reference" "U4"
+			(at 104.14 135.128 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "MCP6002"
+			(at 104.14 136.906 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm"
+			(at 101.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf"
+			(at 101.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "1MHz, Low-Power Op Amp, DFN-8"
+			(at 101.6 135.89 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "6"
+			(uuid "49e0d909-10c4-4b22-99ec-54c6306e4d8e")
+		)
+		(pin "4"
+			(uuid "e2a2e5e4-918a-4182-a2a5-5b708f9388ce")
+		)
+		(pin "3"
+			(uuid "82d2af44-5251-4306-a1b9-5eb092f57e11")
+		)
+		(pin "2"
+			(uuid "8832ca51-9827-4658-b7db-7fa8473a31b9")
+		)
+		(pin "1"
+			(uuid "c7410832-acf8-43a8-8d24-0400dabab41b")
+		)
+		(pin "5"
+			(uuid "0d4aa948-2fe4-4106-a886-6e63d595c618")
+		)
+		(pin "7"
+			(uuid "5a3323d8-17ca-47eb-a267-86c93a2a9e87")
+		)
+		(pin "8"
+			(uuid "02a1eb8b-5368-48d7-bd80-5e21076b7696")
+		)
+		(pin "9"
+			(uuid "162a05d0-a98a-464c-a13b-62593e597205")
+		)
+		(instances
+			(project "Project"
+				(path "/152b0fc1-fa29-4f64-bd5c-6a59f63b05cf/38ebd531-af64-4884-b365-257c0c7ff7c3"
+					(reference "U4")
+					(unit 3)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:LED_Filled")
 		(at 123.19 77.47 180)
 		(unit 1)
@@ -3541,7 +4071,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 123.19 77.47 0)
 			(effects
 				(font
@@ -3619,7 +4149,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 157.1752 105.41 0)
 			(effects
 				(font
@@ -3688,7 +4218,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 101.346 101.854 90)
 			(effects
 				(font
@@ -3894,7 +4424,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Battery:BatteryHolder_Keystone_1042_1x18650"
 			(at 138.43 101.346 90)
 			(effects
 				(font
@@ -3963,7 +4493,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 69.5452 83.82 0)
 			(effects
 				(font
@@ -4099,7 +4629,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
 			(at 58.42 74.93 0)
 			(effects
 				(font
@@ -4369,7 +4899,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 130.556 84.074 90)
 			(effects
 				(font
@@ -4573,7 +5103,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 100.0252 87.63 0)
 			(effects
 				(font
@@ -4708,7 +5238,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:LA Blaster Power Inductor"
 			(at 215.9 97.79 0)
 			(effects
 				(font
@@ -4845,7 +5375,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 210.5152 95.25 0)
 			(effects
 				(font
@@ -4981,7 +5511,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 243.5352 107.95 0)
 			(effects
 				(font
@@ -5316,7 +5846,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 232.1052 107.95 0)
 			(effects
 				(font
@@ -5600,7 +6130,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 221.996 104.394 90)
 			(effects
 				(font
@@ -5779,6 +6309,71 @@
 		)
 	)
 	(symbol
+		(lib_id "0_AKeller_PWR:+3V3")
+		(at 99.06 128.27 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(dnp no)
+		(uuid "e32cc8b3-2229-4e7b-a9d8-028c3a1cd467")
+		(property "Reference" "#PWR018"
+			(at 98.806 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+3V3"
+			(at 99.06 124.714 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 99.06 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 99.06 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 99.06 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin ""
+			(uuid "282ee058-2a69-4f1f-b2cb-1919bddc1ff8")
+		)
+		(instances
+			(project "Project"
+				(path "/152b0fc1-fa29-4f64-bd5c-6a59f63b05cf/38ebd531-af64-4884-b365-257c0c7ff7c3"
+					(reference "#PWR018")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C")
 		(at 167.64 101.6 0)
 		(unit 1)
@@ -5805,7 +6400,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"
 			(at 168.6052 105.41 0)
 			(effects
 				(font
@@ -5873,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:SW_SPDT_CK_JS102011SAQN"
 			(at 91.44 77.47 0)
 			(effects
 				(font

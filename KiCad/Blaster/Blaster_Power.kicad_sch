@@ -5034,7 +5034,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "0_AKeller_Footprints:LA Blaster Power Switch"
 			(at 146.05 95.25 0)
 			(effects
 				(font
@@ -6468,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Footprint" "0_AKeller_Footprints:SW_SPDT_CK_JS102011SAQN"
+		(property "Footprint" "0_AKeller_Footprints:T80-T"
 			(at 91.44 77.47 0)
 			(effects
 				(font

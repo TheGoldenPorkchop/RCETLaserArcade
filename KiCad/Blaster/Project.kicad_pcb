@@ -210,6 +210,16 @@
 		(uuid "ac189eb2-8760-4fe7-9efa-ee9e4ebc169d")
 	)
 	(gr_line
+		(start 50.292 96.012)
+		(end 136.906 96.012)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "B.Fab")
+		(uuid "28256ec9-730c-4bde-b405-ff39d571da7f")
+	)
+	(gr_line
 		(start 128.778 35.814)
 		(end 128.778 38.354)
 		(stroke
@@ -238,6 +248,18 @@
 		)
 		(layer "F.Fab")
 		(uuid "f6140637-3ba1-46d8-a6c0-aec287a4fd48")
+	)
+	(gr_text "Button Line"
+		(at 58.928 96.012 0)
+		(layer "B.Fab")
+		(uuid "062fcdb1-12d8-4713-9013-61c848c904d5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom mirror)
+		)
 	)
 	(gr_text "TOP HATCH"
 		(at 103.378 35.814 0)

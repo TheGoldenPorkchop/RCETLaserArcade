@@ -505,7 +505,7 @@
       "gencad": "",
       "idf": "",
       "netlist": "",
-      "plot": "Master_Gerbers/",
+      "plot": "Target_Master_RevB/Gerbers/",
       "pos_files": "",
       "specctra_dsn": "",
       "step": "",

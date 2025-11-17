@@ -86,7 +86,7 @@
 			(mirror no)
 			(drillshape 0)
 			(scaleselection 1)
-			(outputdirectory "Master_Gerbers/")
+			(outputdirectory "Target_Master_RevB/Gerbers/")
 		)
 	)
 	(net 0 "")

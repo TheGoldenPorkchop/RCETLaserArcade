@@ -15,29 +15,20 @@ void Setup_ConfigureOscillator(void){
     CLKRCON = 0x00; //Disable Clock Reference
 }
 
-/*
-volatile unsigned char SENDLEDRED __at(0x20);
-volatile unsigned char SENDLEDBLUE __at(0x21);
-volatile unsigned char SENDLEDGREEN __at(0x22);
-volatile unsigned char LEDNUMBER __at(0x23);
-volatile unsigned char LEDCOUNTER __at(0x24);
-
-extern void SENDLED(void);
-
-void ConfigureOptions(void){
-    OPTION_REG = 0b11001000;
+void Setup_ConfigureOptions(void){
+    OPTION_REG = 0b10000000; //disable weak pull-ups
 }
 
-void ConfigurePinFunctions(void){
-    APFCON1 = 0x00;
+void Setup_ConfigurePinFunctions(void){
+    APFCON1 = 0b00000110; //TX on RB6, RX on RB7
     APFCON2 = 0x00;
 }
 
-void ConfigurePortA(void){
+void Setup_ConfigurePortA(void){
     PORTA = 0x00; //clear port A
     LATA = 0X00; 
-    TRISA = 0b10001001; //porta as outputs
-    ANSELA = 0b00001001; //porta as digital I/O, RA0 as analog, RA3 as VREF
+    TRISA = 0b00000000; //porta as outputs
+    ANSELA = 0b00000000; //porta as digital I/O
     WPUA = 0x00; //disable all pull-ups
     ODCONA = 0x00; //disable open drain
     SLRCONA = 0x00; //set maximum slew rate
@@ -46,10 +37,10 @@ void ConfigurePortA(void){
     IOCAN = 0x00; //disable falling edge interrupts
 }
 
-void ConfigurePortB(void){
+void Setup_ConfigurePortB(void){
     PORTB = 0x00; //clear port B
-    LATB = 0X00; 
-    TRISB = 0X01; //portb as outputs, RB0 as input
+    LATB = 0x00; 
+    TRISB = 0b10111111; //portb as inputs, RB6 as output
     ANSELB = 0x00; //portb as digital I/O
     WPUB = 0x00; //disable all pull-ups
     ODCONB = 0x00; //disable open drain
@@ -59,10 +50,10 @@ void ConfigurePortB(void){
     IOCBN = 0x00; //disable falling edge interrupts
 }
 
-void ConfigurePortC(void){
+void Setup_ConfigurePortC(void){
     PORTC = 0x00; //clear port C
     LATC = 0X00; 
-    TRISC = 0b11000000;
+    TRISC = 0b00000000; //PortC as outputs
     ANSELC = 0x00; //portC as digital I/O
     WPUC = 0x00; //disable all pull-ups
     ODCONC = 0x00; //disable open drain
@@ -71,6 +62,21 @@ void ConfigurePortC(void){
     IOCCP = 0x00; //disable rising edge interrupts
     IOCCN = 0x00; //disable falling edge interrupts
 }
+
+/*
+volatile unsigned char SENDLEDRED __at(0x20);
+volatile unsigned char SENDLEDBLUE __at(0x21);
+volatile unsigned char SENDLEDGREEN __at(0x22);
+volatile unsigned char LEDNUMBER __at(0x23);
+volatile unsigned char LEDCOUNTER __at(0x24);
+
+extern void SENDLED(void);
+
+
+
+
+
+
 
 void ConfigureCCP1(void){
     TRISCbits.TRISC2 = 1; //disable PWM Output for CCP1 setup

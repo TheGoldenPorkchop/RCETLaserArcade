@@ -8,59 +8,37 @@
 */
 
 #include <xc.h>
-#include "BlasterSetup.h"
+#include "BlasterSubroutines.h"
 
-void Setup_ConfigureOscillator(void){
-    OSCCON = 0b01110000; //Enable Internal osc, set to 8MHz
-    CLKRCON = 0x00; //Disable Clock Reference
+void ConfigurePlayerLED(unsigned char Red, unsigned char Green, unsigned char Blue){
+        
+    TRISCbits.TRISC2 = 1; //disable PWM Output for CCP1 setup
+    TRISCbits.TRISC1 = 1; //disable PWM Output for CCP2 setup
+    TRISCbits.TRISC6 = 1; //disable PWM Output for CCP3 setup
+    
+    //CCP1 = Red
+    //CCP2 = Blue
+    //CCP3 = Green
+    CCP1CON = 0x0C; //set CCP1 to PWM Mode
+    CCP2CON = 0x0C; //set CCP2 to PWM Mode
+    CCP3CON = 0x0C; //set CCP3 to PWM Mode
+    
+    //set pulse width
+    CCPR1L = Red; //red player color
+    CCPR2L = Blue; //blue player color
+    CCPR3L = Green; //green player color
+    
+    T2CON = 0b00000001; //4x pre-scaler on Timer 2
+    PR2 = 0xFF; //Set PR2
+    
+    TRISCbits.TRISC2 = 0; //enable PWM Output
+    TRISCbits.TRISC1 = 0; //enable PWM Output
+    TRISCbits.TRISC6 = 0; //enable PWM Output
+    T2CONbits.TMR2ON = 1;
 }
 
-void Setup_ConfigureOptions(void){
-    OPTION_REG = 0b10000000; //disable weak pull-ups
-}
-
-void Setup_ConfigurePinFunctions(void){
-    APFCON1 = 0b00000110; //TX on RB6, RX on RB7
-    APFCON2 = 0x00;
-}
-
-void Setup_ConfigurePortA(void){
-    PORTA = 0x00; //clear port A
-    LATA = 0X00; 
-    TRISA = 0b00000000; //porta as outputs
-    ANSELA = 0b00000000; //porta as digital I/O
-    WPUA = 0x00; //disable all pull-ups
-    ODCONA = 0x00; //disable open drain
-    SLRCONA = 0x00; //set maximum slew rate
-    INLVLA = 0x00; //set the port to TTL levels
-    IOCAP = 0x00; //disable rising edge interrupts
-    IOCAN = 0x00; //disable falling edge interrupts
-}
-
-void Setup_ConfigurePortB(void){
-    PORTB = 0x00; //clear port B
-    LATB = 0x00; 
-    TRISB = 0b10111111; //portb as inputs, RB6 as output
-    ANSELB = 0x00; //portb as digital I/O
-    WPUB = 0x00; //disable all pull-ups
-    ODCONB = 0x00; //disable open drain
-    SLRCONB = 0x00; //set maximum slew rate
-    INLVLB = 0x00; //set the port to TTL levels
-    IOCBP = 0x00; //disable rising edge interrupts
-    IOCBN = 0x00; //disable falling edge interrupts
-}
-
-void Setup_ConfigurePortC(void){
-    PORTC = 0x00; //clear port C
-    LATC = 0X00; 
-    TRISC = 0b00000000; //PortC as outputs
-    ANSELC = 0x00; //portC as digital I/O
-    WPUC = 0x00; //disable all pull-ups
-    ODCONC = 0x00; //disable open drain
-    SLRCONC = 0x00; //set maximum slew rate
-    INLVLC = 0x00; //set the port to TTL levels
-    IOCCP = 0x00; //disable rising edge interrupts
-    IOCCN = 0x00; //disable falling edge interrupts
+unsigned char LoadFromEEPROM(unsigned char address){
+    return 0x00;
 }
 
 /*

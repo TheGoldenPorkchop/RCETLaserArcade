@@ -9,20 +9,14 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef BLASTER_SETUP
-#define	BLASTER_SETUP
+#ifndef BLASTER_SUBROUTINES
+#define	BLASTER_SUBROUTINES
 
 #include <xc.h> // include processor files - each processor file is guarded.  
 
 //Function Prototypes
-void Setup_ConfigureOscillator(void);
-void Setup_ConfigureOptions(void);
-void Setup_ConfigurePinFunctions(void);
-void Setup_ConfigurePortA(void);
-void Setup_ConfigurePortB(void);
-void Setup_ConfigurePortC(void);
-void Setup_ConfigureLasers(void);
-void Setup_ConfigureAudio(void);
+void ConfigurePlayerLED(unsigned char Red, unsigned char Green, unsigned char Blue);
+unsigned char LoadFromEEPROM(unsigned char address);
 
 #endif	/* Blaster_SETUP */
 

@@ -17,12 +17,12 @@
 #pragma config CP = OFF         // Flash Program Memory Code Protection (Program memory code protection is disabled)
 #pragma config CPD = OFF        // Data Memory Code Protection (Data memory code protection is disabled)
 #pragma config BOREN = OFF      // Brown-out Reset Enable (Brown-out Reset disabled)
-#pragma config CLKOUTEN = OFF   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
+#pragma config CLKOUTEN = ON   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
 #pragma config IESO = OFF       // Internal/External Switchover (Internal/External Switchover mode is disabled)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor is disabled)
 // CONFIG2
 #pragma config WRT = OFF        // Flash Memory Self-Write Protection (Write protection off)
-#pragma config PLLEN = ON       // PLL Enable (4x PLL enabled)
+#pragma config PLLEN = OFF       // PLL Enable (4x PLL enabled)
 #pragma config STVREN = OFF     // Stack Overflow/Underflow Reset Enable (Stack Overflow or Underflow will not cause a Reset)
 #pragma config BORV = LO        // Brown-out Reset Voltage Selection (Brown-out Reset Voltage (Vbor), low trip point selected.)
 #pragma config LPBOR = OFF      // Low Power Brown-Out Reset Enable Bit (Low power brown-out is disabled)
@@ -31,6 +31,7 @@
 //Include Statements
 #include <xc.h>
 #include "BlasterSetup.h"
+#include "BlasterSubroutines.h"
 
 #define _XTAL_FREQ 4000000 //Fosc of 4MHz
 
@@ -56,6 +57,12 @@
 #define ModeRed PORTCbits.RC3
 #define ModeGreen PORTCbits.RC4
 
+//General Register Declarations
+volatile unsigned char PlayerNumber __at(0x20);
+volatile unsigned char PlayerRed __at(0x21);
+volatile unsigned char PlayerGreen __at(0x22);
+volatile unsigned char PlayerBlue __at(0x23);
+
 void __interrupt() ISR(void){
     
 }
@@ -68,6 +75,14 @@ void main(void){
     Setup_ConfigurePortA();
     Setup_ConfigurePortB();
     Setup_ConfigurePortC();
+    PlayerRed = LoadFromEEPROM(0x01);
+    PlayerGreen = LoadFromEEPROM(0x02);
+    PlayerBlue = LoadFromEEPROM (0x03);
+    ConfigurePlayerLED(PlayerRed, PlayerGreen, PlayerBlue);
+    
+    while(1==1){
+        
+    }
     
     return;
 }

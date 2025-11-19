@@ -48,6 +48,7 @@
 
 //define PORTB interrupt flag names
 #define TriggerButtonFlag IOCBFbits.IOCBF1
+#define TriggerButton PORTBbits.RB1
 #define SingleButtonFlag IOCBFbits.IOCBF2
 #define BurstButtonFlag IOCBFbits.IOCBF3
 #define AutoButtonFlag IOCBFbits.IOCBF4
@@ -87,7 +88,45 @@ void __interrupt() ISR(void){
     //if Interrupt on Change
     if(INTCONbits.IOCIF == 1){
         if(TriggerButtonFlag == 1){ //if trigger was released
-            TXREG = 0x55;
+            if (Mode == 1){ //single fire mode
+                TXREG = 0x3C;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = PlayerNumber; //transmit the player number
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3E;
+            }
+            
+            if (Mode == 2){ //three round burst mode
+                TXREG = 0x3C;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = PlayerNumber; //transmit the player number
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3E;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3C;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = PlayerNumber; //transmit the player number
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3E;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3C;
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = PlayerNumber; //transmit the player number
+                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                TXREG = 0x3E;
+            }
+            
+            if (Mode == 3){ //full auto fire mode
+                while (TriggerButton == 0){
+                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                    TXREG = 0x3C;
+                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                    TXREG = PlayerNumber; //transmit the player number
+                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+                    TXREG = 0x3E;
+                }
+            }
+            
             TriggerButtonFlag = 0; //clear interrupt flag
         }
         

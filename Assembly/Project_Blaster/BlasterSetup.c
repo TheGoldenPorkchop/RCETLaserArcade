@@ -46,8 +46,8 @@ void Setup_ConfigurePortB(void){
     ODCONB = 0x00; //disable open drain
     SLRCONB = 0x00; //set maximum slew rate
     INLVLB = 0x00; //set the port to TTL levels
-    IOCBP = 0x00; //disable rising edge interrupts
-    IOCBN = 0x00; //disable falling edge interrupts
+    IOCBP = 0b00011100; //enable RB2, RB3, RB4 rising edge interrupts
+    IOCBN = 0b00000010; //enable RB1 falling edge interrupt
 }
 
 void Setup_ConfigurePortC(void){
@@ -85,6 +85,24 @@ void Setup_ConfigureLasers(void) {
     PSMC1DCS = 0x01; //only time base causes a falling edge event
     PSMC1MDL = 0b11101000; //PSMC1 is modulated by active low signal at PSMC1IN
     PSMC1CON = 0b11000000; //enable PSMC and load changes in
+}
+
+void Setup_ConfigureInterrupts(void){
+    INTCON = 0b00001000; //enable interrupts on change
+    
+    //configure peripheral interrupts
+    PIE1 = 0b00000000;
+    PIE2 = 0x00;
+    PIE3 = 0x00;
+    PIE4 = 0x00;
+    
+    //clear all peripheral flags
+    PIR1 = 0x00;
+    PIR2 = 0x00;
+    PIR3 = 0x00;
+    PIR4 = 0x00;
+    
+    INTCONbits.GIE = 1; //enable global interrupts
 }
 
 /*
@@ -140,16 +158,5 @@ void ConfigureADC(void){
     ADCON2 = 0x00; //clear everything
 }
 
-void ConfigureInterrupts(void){
-    INTCON = 0b01000000;
-    PIE1 = 0b01000000;
-    PIE2 = 0x00;
-    PIE3 = 0x00;
-    PIE4 = 0x00;
-    PIR1 = 0x00;
-    PIR2 = 0x00;
-    PIR3 = 0x00;
-    PIR4 = 0x00;
-    INTCONbits.GIE = 1;
-}
+
  */

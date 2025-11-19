@@ -23,6 +23,7 @@ void Setup_ConfigurePortB(void);
 void Setup_ConfigurePortC(void);
 void Setup_ConfigureLasers(void);
 void Setup_ConfigureAudio(void);
+void Setup_ConfigureInterrupts(void);
 
 #endif	/* Blaster_SETUP */
 

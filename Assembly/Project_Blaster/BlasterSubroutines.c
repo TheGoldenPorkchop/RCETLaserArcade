@@ -4,11 +4,13 @@
    File Version:    1                                                               
    Author:          Andrew Keller                                                       
    Company:         Idaho State University					    
-   Description:     Laser Arcade Blaster Setup Source Code File
+   Description:     Laser Arcade Blaster Subroutines Source Code File
 */
 
 #include <xc.h>
 #include "BlasterSubroutines.h"
+
+extern void CHARGE_EEPROM(void);
 
 void ConfigurePlayerLED(unsigned char Red, unsigned char Green, unsigned char Blue){
         
@@ -38,7 +40,22 @@ void ConfigurePlayerLED(unsigned char Red, unsigned char Green, unsigned char Bl
 }
 
 unsigned char LoadFromEEPROM(unsigned char address){
-    return 0x00;
+    EEADRL = address;
+    EECON1bits.CFGS = 0; //deselect config space
+    EECON1bits.EEPGD = 0; //configure to read from data and not program memory
+    EECON1bits.RD = 1; //read from EEPROM    
+    return EEDATL;
+}
+
+void SaveToEEPROM(unsigned char address, unsigned char data){
+    EEADRL = address; //change EEPROM address
+    EEDATL = data; //set EEPROM data
+    EECON1bits.CFGS = 0; //deselect config space
+    EECON1bits.EEPGD = 0; //configure to read from data and not program memory
+    EECON1bits.WREN = 1; //enable writes
+    CHARGE_EEPROM();
+    EECON1bits.WREN = 0; //disable writes
+    while (EECON1bits.WR == 1){} //wait for EEPROM to finish writing
 }
 
 /*

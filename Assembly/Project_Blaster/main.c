@@ -17,7 +17,7 @@
 #pragma config CP = OFF         // Flash Program Memory Code Protection (Program memory code protection is disabled)
 #pragma config CPD = OFF        // Data Memory Code Protection (Data memory code protection is disabled)
 #pragma config BOREN = OFF      // Brown-out Reset Enable (Brown-out Reset disabled)
-#pragma config CLKOUTEN = ON   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
+#pragma config CLKOUTEN = OFF   // Clock Out Enable (CLKOUT function is disabled. I/O or oscillator function on the CLKOUT pin)
 #pragma config IESO = OFF       // Internal/External Switchover (Internal/External Switchover mode is disabled)
 #pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enable (Fail-Safe Clock Monitor is disabled)
 // CONFIG2
@@ -33,7 +33,8 @@
 #include "BlasterSetup.h"
 #include "BlasterSubroutines.h"
 
-#define _XTAL_FREQ 4000000 //Fosc of 4MHz
+//define oscillation frequency
+#define _XTAL_FREQ 8000000 //Fosc of 8MHz
 
 //define PORTA pin names
 #define AudioTRIG0 PORTAbits.RA0
@@ -57,11 +58,23 @@
 #define ModeRed PORTCbits.RC3
 #define ModeGreen PORTCbits.RC4
 
+//define RAM addresses
+#define RAMPlayerNumber 0x20
+#define RAMPlayerRed 0x21
+#define RAMPlayerGreen 0x22
+#define RAMPlayerBlue 0x23
+
+//define EEPROM addresses
+#define EEPROMPlayerNumber 0x00
+#define EEPROMPlayerRed 0x01
+#define EEPROMPlayerGreen 0x02
+#define EEPROMPlayerBlue 0x03
+
 //General Register Declarations
-volatile unsigned char PlayerNumber __at(0x20);
-volatile unsigned char PlayerRed __at(0x21);
-volatile unsigned char PlayerGreen __at(0x22);
-volatile unsigned char PlayerBlue __at(0x23);
+volatile unsigned char PlayerNumber __at(RAMPlayerNumber);
+volatile unsigned char PlayerRed __at(RAMPlayerRed);
+volatile unsigned char PlayerGreen __at(RAMPlayerGreen);
+volatile unsigned char PlayerBlue __at(RAMPlayerBlue);
 
 void __interrupt() ISR(void){
     
@@ -75,9 +88,10 @@ void main(void){
     Setup_ConfigurePortA();
     Setup_ConfigurePortB();
     Setup_ConfigurePortC();
-    PlayerRed = LoadFromEEPROM(0x01);
-    PlayerGreen = LoadFromEEPROM(0x02);
-    PlayerBlue = LoadFromEEPROM (0x03);
+    PlayerNumber = LoadFromEEPROM(EEPROMPlayerNumber);
+    PlayerRed = LoadFromEEPROM(EEPROMPlayerRed);
+    PlayerGreen = LoadFromEEPROM(EEPROMPlayerGreen);
+    PlayerBlue = LoadFromEEPROM (EEPROMPlayerBlue);
     ConfigurePlayerLED(PlayerRed, PlayerGreen, PlayerBlue);
     
     while(1==1){

@@ -17,6 +17,7 @@
 //Function Prototypes
 void ConfigurePlayerLED(unsigned char Red, unsigned char Green, unsigned char Blue);
 unsigned char LoadFromEEPROM(unsigned char address);
+void SaveToEEPROM(unsigned char address, unsigned char data);
 
 #endif	/* Blaster_SETUP */
 

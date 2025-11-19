@@ -88,6 +88,8 @@ void main(void){
     Setup_ConfigurePortA();
     Setup_ConfigurePortB();
     Setup_ConfigurePortC();
+    Setup_ConfigureLasers();
+    
     PlayerNumber = LoadFromEEPROM(EEPROMPlayerNumber);
     PlayerRed = LoadFromEEPROM(EEPROMPlayerRed);
     PlayerGreen = LoadFromEEPROM(EEPROMPlayerGreen);
@@ -95,7 +97,9 @@ void main(void){
     ConfigurePlayerLED(PlayerRed, PlayerGreen, PlayerBlue);
     
     while(1==1){
+        TXREG = 0x55;
         
+        __delay_ms(50);
     }
     
     return;

@@ -63,6 +63,30 @@ void Setup_ConfigurePortC(void){
     IOCCN = 0x00; //disable falling edge interrupts
 }
 
+void Setup_ConfigureLasers(void) {
+    SPBRGH = 0x00; //UART BAUD RATE OF 2400 W/ 32MHz OSCILLATOR
+    SPBRGL = 0xCF;
+    BAUDCON = 0b00001000; //16-BIT BAUD RATE GENERATOR
+    RCSTA = 0b10010000; //ENABLE UART PORT, ENABLE RECEIVER
+    TXSTA = 0b00100000; //ENABLE TRANSMITTER, ASYNCHRONOUS
+    
+    PSMC1PRH = 0x00; //Set the frequency to 38kHz
+    PSMC1PRL = 0x68;
+    PSMC1DCH = 0x00; //set the falling edge to centered servo
+    PSMC1DCL = 0x34;
+    PSMC1PHH = 0x00; //set the rising edge to always 0
+    PSMC1PHL = 0x00;
+    PSMC1CLK = 0b00010000; //Set PSMC1 clock to FOSC/2 (4MHz)
+    PSMC1STR0 = 0x01; //enable PSMC output 1
+    PSMC1POL = 0x00; //polarity is active high
+    PSMC1OEN = 0x01; //output enabled A
+    PSMC1PRS = 0x01; //only time base causes a period event
+    PSMC1PHS = 0x01; //only time base causes a rising edge event
+    PSMC1DCS = 0x01; //only time base causes a falling edge event
+    PSMC1MDL = 0b11101000; //PSMC1 is modulated by active low signal at PSMC1IN
+    PSMC1CON = 0b11000000; //enable PSMC and load changes in
+}
+
 /*
 volatile unsigned char SENDLEDRED __at(0x20);
 volatile unsigned char SENDLEDBLUE __at(0x21);
@@ -107,11 +131,7 @@ void ConfigurePSMC1(void){
 }
 
 void ConfigureUART(void){
-    SPBRGH = 0x03; //UART BAUD RATE OF 2400 W/ 32MHz OSCILLATOR
-    SPBRGL = 0x40;
-    BAUDCON = 0b00001000; //16-BIT BAUD RATE GENERATOR
-    RCSTA = 0b10010000; //ENABLE UART PORT, ENABLE RECEIVER
-    TXSTA = 0b00100000; //ENABLE TRANSMITTER, ASYNCHRONOUS
+    
 }
 
 void ConfigureADC(void){

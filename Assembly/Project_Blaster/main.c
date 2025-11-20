@@ -33,45 +33,6 @@
 #include "BlasterSetup.h"
 #include "BlasterSubroutines.h"
 
-//define oscillation frequency
-#define _XTAL_FREQ 8000000 //Fosc of 8MHz
-
-//define PORTA pin names
-#define AudioTRIG0 PORTAbits.RA0
-#define AudioTRIG1 PORTAbits.RA1
-#define AudioTRIG2 PORTAbits.RA2
-#define AudioTRIG3 PORTAbits.RA3
-#define AudioTRIG4 PORTAbits.RA4
-#define AudioTRIG5 PORTAbits.RA5
-#define AudioEnable PORTAbits.RA6
-#define Solenoid PORTAbits.RA7
-
-//define PORTB interrupt flag names
-#define TriggerButtonFlag IOCBFbits.IOCBF1
-#define TriggerButton PORTBbits.RB1
-#define SingleButtonFlag IOCBFbits.IOCBF2
-#define BurstButtonFlag IOCBFbits.IOCBF3
-#define AutoButtonFlag IOCBFbits.IOCBF4
-#define AudioActivityFlag IOCBFbits.IOCBF5
-
-//define PORTC pin names
-#define ModeBlue PORTCbits.RC5
-#define ModeRed PORTCbits.RC3
-#define ModeGreen PORTCbits.RC4
-
-//define RAM addresses
-#define RAMPlayerNumber 0x20
-#define RAMPlayerRed 0x21
-#define RAMPlayerGreen 0x22
-#define RAMPlayerBlue 0x23
-#define RAMMode 0x24
-
-//define EEPROM addresses
-#define EEPROMPlayerNumber 0x00
-#define EEPROMPlayerRed 0x01
-#define EEPROMPlayerGreen 0x02
-#define EEPROMPlayerBlue 0x03
-
 //General Register Declarations
 volatile unsigned char PlayerNumber __at(RAMPlayerNumber);
 volatile unsigned char PlayerRed __at(RAMPlayerRed);
@@ -89,41 +50,18 @@ void __interrupt() ISR(void){
     if(INTCONbits.IOCIF == 1){
         if(TriggerButtonFlag == 1){ //if trigger was released
             if (Mode == 1){ //single fire mode
-                TXREG = 0x3C;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = PlayerNumber; //transmit the player number
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3E;
+                FireBlaster(PlayerNumber); //fire the blaster
             }
             
             if (Mode == 2){ //three round burst mode
-                TXREG = 0x3C;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = PlayerNumber; //transmit the player number
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3E;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3C;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = PlayerNumber; //transmit the player number
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3E;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3C;
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = PlayerNumber; //transmit the player number
-                while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                TXREG = 0x3E;
+                FireBlaster(PlayerNumber); //fire the blaster
+                FireBlaster(PlayerNumber); //fire the blaster
+                FireBlaster(PlayerNumber); //fire the blaster
             }
             
             if (Mode == 3){ //full auto fire mode
                 while (TriggerButton == 0){
-                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                    TXREG = 0x3C;
-                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                    TXREG = PlayerNumber; //transmit the player number
-                    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
-                    TXREG = 0x3E;
+                    FireBlaster(PlayerNumber); //fire the blaster
                 }
             }
             

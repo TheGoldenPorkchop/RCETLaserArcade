@@ -9,6 +9,7 @@
 
 #include <xc.h>
 #include "BlasterSubroutines.h"
+#include "BlasterSetup.h"
 
 extern void CHARGE_EEPROM(void);
 
@@ -56,6 +57,18 @@ void SaveToEEPROM(unsigned char address, unsigned char data){
     CHARGE_EEPROM();
     EECON1bits.WREN = 0; //disable writes
     while (EECON1bits.WR == 1){} //wait for EEPROM to finish writing
+}
+
+void FireBlaster(unsigned char PlayerNum){
+    Solenoid = 1; //extend the solenoid
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = 0x3C; //send ASCII <
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = PlayerNum; //transmit the player number
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = 0x3E; //send ASCII >
+    __delay_ms(10);
+    Solenoid = 0; //retract the solenoid
 }
 
 /*

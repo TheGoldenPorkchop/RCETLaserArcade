@@ -59,16 +59,35 @@ void SaveToEEPROM(unsigned char address, unsigned char data){
     while (EECON1bits.WR == 1){} //wait for EEPROM to finish writing
 }
 
-void FireBlaster(unsigned char PlayerNum){
-    Solenoid = 1; //extend the solenoid
+void SingleFireBlaster(unsigned char PlayerNum){
+    PORTA = 0b01111101; //enable speaker, trigger audio TRIG1
+    while (AudioActivity == 1){} //wait for audio to start
+    PORTA = 0b11111111; //enable speaker, extend solenoid, disable audio triggers
     while (TXSTAbits.TRMT == 0){} //wait for TX to be available
     TXREG = 0x3C; //send ASCII <
     while (TXSTAbits.TRMT == 0){} //wait for TX to be available
     TXREG = PlayerNum; //transmit the player number
     while (TXSTAbits.TRMT == 0){} //wait for TX to be available
     TXREG = 0x3E; //send ASCII >
-    __delay_ms(10);
-    Solenoid = 0; //retract the solenoid
+    __delay_ms(10); //delay 100 ms
+    PORTA = 0b01111111; //enable speaker, retract solenoid, disable audio triggers
+    while (AudioActivity == 0){} //wait for audio to stop
+    __delay_ms(100); //delay 100ms
+    PORTA = 0b00111111; //enable speaker, retract solenoid, disable audio triggers
+}
+
+void FireBlaster(unsigned char PlayerNum){
+    while (AudioActivity == 1){} //wait for audio to start
+    PORTA = 0b11111101; //keep speaker enabled, extend solenoid, leave audio triggered
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = 0x3C; //send ASCII <
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = PlayerNum; //transmit the player number
+    while (TXSTAbits.TRMT == 0){} //wait for TX to be available
+    TXREG = 0x3E; //send ASCII >
+    __delay_ms(10); //delay 10 ms
+    PORTA = 0b01111101; //keep speaker enabled, retract solenoid, leave audio triggered
+    __delay_ms(100); //delay 100ms to wait for audio to finish playing
 }
 
 /*

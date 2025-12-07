@@ -33,7 +33,7 @@
 #define SingleButtonFlag IOCBFbits.IOCBF2
 #define BurstButtonFlag IOCBFbits.IOCBF3
 #define AutoButtonFlag IOCBFbits.IOCBF4
-#define AudioActivityFlag IOCBFbits.IOCBF5
+#define AudioActivity PORTBbits.RB5
 
 //define PORTC pin names
 #define ModeBlue PORTCbits.RC5
@@ -61,7 +61,7 @@ void Setup_ConfigurePortA(void);
 void Setup_ConfigurePortB(void);
 void Setup_ConfigurePortC(void);
 void Setup_ConfigureLasers(void);
-void Setup_ConfigureAudio(void);
+void Setup_ConfigureAudio(unsigned char PlayerNum);
 void Setup_ConfigureInterrupts(void);
 
 #endif	/* Blaster_SETUP */

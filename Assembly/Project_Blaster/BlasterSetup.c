@@ -25,8 +25,8 @@ void Setup_ConfigurePinFunctions(void){
 }
 
 void Setup_ConfigurePortA(void){
-    PORTA = 0x00; //clear port A
-    LATA = 0X00; 
+    PORTA = 0b01111111; //clear port A
+    LATA = 0b01111111; 
     TRISA = 0b00000000; //porta as outputs
     ANSELA = 0b00000000; //porta as digital I/O
     WPUA = 0x00; //disable all pull-ups
@@ -35,6 +35,7 @@ void Setup_ConfigurePortA(void){
     INLVLA = 0x00; //set the port to TTL levels
     IOCAP = 0x00; //disable rising edge interrupts
     IOCAN = 0x00; //disable falling edge interrupts
+    PORTA = 0b01111111; //disable all audio
 }
 
 void Setup_ConfigurePortB(void){
@@ -72,7 +73,7 @@ void Setup_ConfigureLasers(void) {
     
     PSMC1PRH = 0x00; //Set the frequency to 38kHz
     PSMC1PRL = 0x68;
-    PSMC1DCH = 0x00; //set the falling edge to centered servo
+    PSMC1DCH = 0x00; //set the falling edge to centered 50% DC
     PSMC1DCL = 0x34;
     PSMC1PHH = 0x00; //set the rising edge to always 0
     PSMC1PHL = 0x00;
@@ -88,10 +89,10 @@ void Setup_ConfigureLasers(void) {
 }
 
 void Setup_ConfigureInterrupts(void){
-    INTCON = 0b00001000; //enable interrupts on change
+    INTCON = 0b01001000; //enable interrupts on change and peripheral interrupts
     
     //configure peripheral interrupts
-    PIE1 = 0b00000000;
+    PIE1 = 0b00100000; //enable UART RX interrupt
     PIE2 = 0x00;
     PIE3 = 0x00;
     PIE4 = 0x00;
@@ -105,58 +106,37 @@ void Setup_ConfigureInterrupts(void){
     INTCONbits.GIE = 1; //enable global interrupts
 }
 
-/*
-volatile unsigned char SENDLEDRED __at(0x20);
-volatile unsigned char SENDLEDBLUE __at(0x21);
-volatile unsigned char SENDLEDGREEN __at(0x22);
-volatile unsigned char LEDNUMBER __at(0x23);
-volatile unsigned char LEDCOUNTER __at(0x24);
-
-extern void SENDLED(void);
-
-
-
-
-
-
-
-void ConfigureCCP1(void){
-    TRISCbits.TRISC2 = 1; //disable PWM Output for CCP1 setup
-    CCP1CON = 0x0C; //set CCP1 to PWM Mode
-    CCPR1L = 0x00; //PW for 50%DC at 38kHz
-    T2CON = 0b00000011; //64x pre-scaler
-    PR2 = 0xFF; //Set PR2 to 25 for 38kHz period
-    TRISCbits.TRISC2 = 0; //enable PWM Output for CCP1
-    T2CONbits.TMR2ON = 1;
-}
-
-void ConfigurePSMC1(void){
-    PSMC1PRH = 0x00; //Set the period to 20ms
-    PSMC1PRL = 0x68;
-    PSMC1DCH = 0x00; //set the falling edge to centered servo
-    PSMC1DCL = 0x34;
-    PSMC1PHH = 0x00; //set the rising edge to always 0
-    PSMC1PHL = 0x00;
-    PSMC1CLK = 0b00110000; //Set PSMC1 clock to FOSC/8 (4MHz)
-    PSMC1STR0 = 0x01; //enable PSMC output 1
-    PSMC1POL = 0x00; //polarity is active high
-    PSMC1OEN = 0x01; //output enabled A
-    PSMC1PRS = 0x01; //only time base causes a period event
-    PSMC1PHS = 0x01; //only time base causes a rising edge event
-    PSMC1DCS = 0x01; //only time base causes a falling edge event
-    PSMC1MDL = 0b11101000; //PSMC1 is modulated by active low signal at PSMC1IN
-    PSMC1CON = 0b11000000; //enable PSMC and load changes in
-}
-
-void ConfigureUART(void){
+void Setup_ConfigureAudio(unsigned char PlayerNum){
+    //setup the class D 100kHz square wave
+    PSMC2PRH = 0x00; //Set the frequency to 100kHz
+    PSMC2PRL = 0x4F;
+    PSMC2DCH = 0x00; //set the falling edge to centered 50% DC
+    PSMC2DCL = 0x27;
+    PSMC2PHH = 0x00; //set the rising edge to always 0
+    PSMC2PHL = 0x00;
+    PSMC2CLK = 0b00000000; //Set PSMC2 clock to FOSC/1 (8MHz)
+    PSMC2STR0 = 0x02; //enable PSMC output B
+    PSMC2POL = 0x00; //polarity is active high
+    PSMC2OEN = 0x02; //output enabled B
+    PSMC2PRS = 0x01; //only time base causes a period event
+    PSMC2PHS = 0x01; //only time base causes a rising edge event
+    PSMC2DCS = 0x01; //only time base causes a falling edge event
+    PSMC2MDL = 0x00; //PSMC1 is not modulated
+    PSMC2CON = 0b11000000; //enable PSMC and load changes in
     
+    //disable all audio
+    AudioTRIG0 = 1;
+    AudioTRIG1 = 1;
+    AudioTRIG2 = 1;
+    AudioTRIG3 = 1;
+    AudioTRIG4 = 1;
+    AudioTRIG5 = 1;
+    
+    AudioEnable = 1; //enable speaker
+    AudioTRIG0 = 0; //play trigger 0
+    while (AudioActivity == 1){} //wait for audio to start playing
+    AudioTRIG0 = 1;
+    while (AudioActivity == 0){} //wait for audio to finish playing
+    __delay_ms(150);
+    AudioEnable = 0; //disable speaker
 }
-
-void ConfigureADC(void){
-    ADCON0 = 0b11000001; //Enable ADC for AN0, 10-bit result
-    ADCON1 = 0b00010001; //FOSC/8 ADC clock, VREF+ on RA3, VREF- on VSS
-    ADCON2 = 0x00; //clear everything
-}
-
-
- */

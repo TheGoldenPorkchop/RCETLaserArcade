@@ -66,8 +66,47 @@
 ;		|		|		|		|		|		|		|		*		
 ;-------------------------------------------------------------------------------------------------------------------------------*		
 		
+;EEPROM Memory Map
+     ;**** Do not under any circumstances ****
+     ;**** Use EEPROM row 0 it is evil ****
+    
+;The byte at address 0x10 is used to store the I2C address of the target slave device.
+;The byte at address 0x11 is used to store the static red value
+;The byte at address 0x12 is used to store the static green value
+;The byte at address 0x13 is used to store the static blue value
+;The byte at address 0x14 is used to store the LED number value
+     
+;The byte at address 0x20 is used to store the player 1 red value.
+;The byte at address 0x21 is used to store the player 1 green value.
+;The byte at address 0x22 is used to store the player 1 blue value.
+;The byte at address 0x23 is used to store the player 2 red value.
+;The byte at address 0x24 is used to store the player 2 green value.
+;The byte at address 0x25 is used to store the player 2 blue value.
+;The byte at address 0x26 is used to store the player 3 red value.
+;The byte at address 0x27 is used to store the player 3 green value.
+;The byte at address 0x28 is used to store the player 3 blue value.
+;The byte at address 0x29 is used to store the player 4 red value.
+;The byte at address 0x2A is used to store the player 4 green value.
+;The byte at address 0x2B is used to store the player 4 blue value.
+     
+;The byte at address 0x30 is used to store the Positions Output byte
+;The byte at address 0x31 is used to store the high byte of servo 1 enabled
+;The byte at address 0x32 is used to store the low byte of servo 1 enabled
+;The byte at address 0x33 is used to store the high byte of servo 1 disabled
+;The byte at address 0x34 is used to store the low byte of servo 1 disabled
+;The byte at address 0x35 is used to store the high byte of servo 2 enabled
+;The byte at address 0x36 is used to store the low byte of servo 2 enabled
+;The byte at address 0x37 is used to store the high byte of servo 2 disabled
+;The byte at address 0x38 is used to store the low byte of servo 2 disabled
+;The byte at address 0x39 is used to store the high byte of servo 3 enabled
+;The byte at address 0x3A is used to store the low byte of servo 3 enabled
+;The byte at address 0x3B is used to store the high byte of servo 3 disabled
+;The byte at address 0x3C is used to store the low byte of servo 3 disabled
+;The byte at address 0x3D is used to store the flag for the stepper motor
 		
-  EEPROM_ADDR   EQU 0x20
+  
+    
+    EEPROM_ADDR   EQU 0x20
   EEPROM_DATA   EQU 0x21
   EEPROM_SAVE   EQU 0x22
   ;Status Registers
@@ -129,6 +168,8 @@
    S3E_PL	EQU 0X48
    S3D_PH	EQU 0X49
    S3D_PL	EQU 0X4A
+   CAL_PH	EQU 0x4B
+   CAL_PL	EQU 0x4C
 		
 INITIALIZE_CODE	CODE		
 INITIALIZE	
@@ -265,8 +306,13 @@ INITIALIZE
 		CLRF	    INLVLC			;SET PORTC INPUT THRESHOLD TO TTL (IGNORED NOISE BETTER FOR TRIGGER INPUT)
 		
 ;*** I2C SETUP ****
+		BANKSEL	    PORTA
+		MOVLW	    0x10
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		BANKSEL	    PORTA
+		MOVFW	    EEPROM_SAVE
 		BANKSEL	    SSPADD		
-		MOVLW	    0x02
 		MOVWF	    SSPADD			;SET I2C ADDRESS
 		BANKSEL	    SSPCON
 		MOVLW	    0x16			;SET TO I2C 7-BIT ADDRESS SLAVE MODE
@@ -312,111 +358,255 @@ INITIALIZE
 		BCF	    INTCON,IOCIF		;CLEAR IOCIF
 		BANKSEL	    PORTA
 		
+;*** LOAD FROM EEPROM ***
+		BANKSEL	    PORTA			;RETRIEVE THE _LEDNUMBER FROM EEPROM
+		MOVLW	    0x14
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    _LEDNUMBER
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P1_R FROM EEPROM
+		MOVLW	    0x20
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P1_R
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P1_G FROM EEPROM
+		MOVLW	    0x21
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P1_G
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P1_B FROM EEPROM
+		MOVLW	    0x22
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P1_B
+		
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P2_R FROM EEPROM
+		MOVLW	    0x23
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P2_R
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P2_G FROM EEPROM
+		MOVLW	    0x24
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P2_G
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P2_B FROM EEPROM
+		MOVLW	    0x25
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P2_B
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P3_R FROM EEPROM
+		MOVLW	    0x26
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P3_R
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P3_G FROM EEPROM
+		MOVLW	    0x27
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P3_G
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P3_B FROM EEPROM
+		MOVLW	    0x28
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P3_B
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P4_R FROM EEPROM
+		MOVLW	    0x29
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P4_R
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P4_G FROM EEPROM
+		MOVLW	    0x2A
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P4_G
+		
+		BANKSEL	    PORTA			;RETRIEVE THE P4_B FROM EEPROM
+		MOVLW	    0x2B
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    P4_B
+		
+		BANKSEL	    PORTA			;RETRIEVE THE S1E_PH FROM EEPROM
+		MOVLW	    0x31
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S1E_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S1E_PL FROM EEPROM
+		MOVLW	    0x32
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S1E_PL
+		BANKSEL	    PORTA			;RETRIEVE THE S1D_PH FROM EEPROM
+		MOVLW	    0x33
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S1D_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S1D_PL FROM EEPROM
+		MOVLW	    0x34
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S1D_PL
+		
+		BANKSEL	    PORTA			;RETRIEVE THE S2E_PH FROM EEPROM
+		MOVLW	    0x35
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S2E_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S2E_PL FROM EEPROM
+		MOVLW	    0x36
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S2E_PL
+		BANKSEL	    PORTA			;RETRIEVE THE S2D_PH FROM EEPROM
+		MOVLW	    0x37
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S2D_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S2D_PL FROM EEPROM
+		MOVLW	    0x38
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S2D_PL
+		
+		BANKSEL	    PORTA			;RETRIEVE THE S3E_PH FROM EEPROM
+		MOVLW	    0x39
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S3E_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S3E_PL FROM EEPROM
+		MOVLW	    0x3A
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S3E_PL
+		BANKSEL	    PORTA			;RETRIEVE THE S3D_PH FROM EEPROM
+		MOVLW	    0x3B
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S3D_PH
+		BANKSEL	    PORTA			;RETRIEVE THE S3D_PL FROM EEPROM
+		MOVLW	    0x3C
+		MOVWF	    EEPROM_ADDR
+		CALL	    Read_EEPROM
+		MOVFW	    EEPROM_SAVE
+		MOVWF	    S3D_PL
 		
   ;*** PSMC SETUP ***
 		BANKSEL	    PSMC1OEN
 		MOVLW	    0X01
 		MOVWF	    PSMC1OEN
+		BSF	    PSMC1PRS, P1PRST
+		BSF	    PSMC1PHS,P1PHST
+		BSF	    PSMC1DCS,P1DCST
+		MOVLW	    0X32
+		MOVWF	    PSMC1CLK
+		CLRF	    PSMC1PHH
+		CLRF	    PSMC1PHL
+		MOVLW	    0X20
+		MOVWF	    PSMC1PRL
+		MOVLW	    0X4E
+		MOVWF	    PSMC1PRH
+		BANKSEL	    PORTA
+		MOVFW	    S1D_PH
+		BANKSEL	    PSMC1DCH
+		MOVWF	    PSMC1DCH
+		BANKSEL	    PORTA
+		MOVFW	    S1D_PL
+		BANKSEL	    PSMC1DCL
+		MOVWF	    PSMC1DCL
+		MOVLW	    0XC0
+		MOVWF	    PSMC1CON
+		
 		BANKSEL	    PSMC2OEN
 		MOVWF	    PSMC2OEN
+		BSF	    PSMC2PRS,P2PRST
+		BSF	    PSMC2PHS,P2PHST
+		BSF	    PSMC2DCS,P2DCST
+		MOVLW	    0X32
+		MOVWF	    PSMC2CLK
+		CLRF	    PSMC2PHH
+		CLRF	    PSMC2PHL
+		MOVLW	    0X20
+		MOVWF	    PSMC2PRL
+		MOVLW	    0X4E
+		MOVWF	    PSMC2PRH
+		BANKSEL	    PORTA
+		MOVFW	    S2D_PH
+		BANKSEL	    PSMC2DCH
+		MOVWF	    PSMC2DCH
+		BANKSEL	    PORTA
+		MOVFW	    S2D_PL
+		BANKSEL	    PSMC2DCL
+		MOVWF	    PSMC2DCL
+		MOVLW	    0XC0
+		MOVWF	    PSMC2CON
+		
 		BANKSEL	    PSMC3OEN
 		MOVWF	    PSMC3OEN
+		BSF	    PSMC3PRS,P3PRST
+		BSF	    PSMC3PHS,P3PHST
+		BSF	    PSMC3DCS,P3DCST
+		MOVLW	    0X32
+		MOVWF	    PSMC3CLK
+		CLRF	    PSMC3PHH
+		MOVWF	    PSMC3PHL
+		MOVLW	    0X20
+		MOVWF	    PSMC3PRL
+		MOVLW	    0X4E
+		MOVWF	    PSMC3PRH
+		BANKSEL	    PORTA
+		MOVFW	    S3D_PH
+		BANKSEL	    PSMC3DCH
+		MOVWF	    PSMC3DCH
+		BANKSEL	    PORTA
+		MOVFW	    S3D_PL
+		BANKSEL	    PSMC3DCL
+		MOVWF	    PSMC3DCL
+		MOVLW	    0XC0
+		MOVWF	    PSMC3CON
+		
 		BANKSEL	    TRISC
 		BCF	    TRISC,0
 		BCF	    TRISC,5
 		BCF	    TRISC,6
 
-		BANKSEL	    PSMC1PRS
-		BSF	    PSMC1PRS, P1PRST
-		BANKSEL	    PSMC2PRS
-		BSF	    PSMC2PRS,P2PRST
-		BANKSEL	    PSMC3PRS
-		BSF	    PSMC3PRS,P3PRST
-
-		BANKSEL	    PSMC1PHS
-		BSF	    PSMC1PHS,P1PHST
-		BANKSEL	    PSMC2PHS
-		BSF	    PSMC2PHS,P2PHST
-		BANKSEL	    PSMC3PHS
-		BSF	    PSMC3PHS,P3PHST
-
-		BANKSEL	    PSMC1DCS
-		BSF	    PSMC1DCS,P1DCST
-		BANKSEL	    PSMC2DCS
-		BSF	    PSMC2DCS,P2DCST
-		BANKSEL	    PSMC3DCS
-		BSF	    PSMC3DCS,P3DCST
-
-		BANKSEL	    PSMC1CLK
-		MOVLW	    0X32
-		MOVWF	    PSMC1CLK
-		BANKSEL	    PSMC2CLK
-		MOVWF	    PSMC2CLK
-		BANKSEL	    PSMC3CLK
-		MOVWF	    PSMC3CLK
-
-		BANKSEL	    PSMC1PRL
-		MOVLW	    0X20
-		MOVWF	    PSMC1PRL
-		BANKSEL	    PSMC2PRL
-		MOVWF	    PSMC2PRL
-		BANKSEL	    PSMC3PRL
-		MOVWF	    PSMC3PRL
-		MOVLW	    0X4E
-		BANKSEL	    PSMC1PRH
-		MOVWF	    PSMC1PRH
-		BANKSEL	    PSMC2PRH
-		MOVWF	    PSMC2PRH
-		BANKSEL	    PSMC3PRH
-		MOVWF	    PSMC3PRH
-
-		BANKSEL	    PSMC1DCL
-		MOVLW	    0X10
-		MOVWF	    PSMC1DCL
-		BANKSEL	    PSMC2DCL
-		MOVWF	    PSMC2DCL
-		BANKSEL	    PSMC3DCL
-		MOVWF	    PSMC3DCL
-		MOVLW	    0X27
-		BANKSEL	    PSMC1DCH
-		MOVWF	    PSMC1DCH
-		BANKSEL	    PSMC2DCH
-		MOVWF	    PSMC2DCH
-		BANKSEL	    PSMC3DCH
-		MOVWF	    PSMC3DCH
-
-		MOVLW	    0X00
-		BANKSEL	    PSMC1PHH
-		MOVWF	    PSMC1PHH
-		BANKSEL	    PSMC2PHH
-		MOVWF	    PSMC2PHH
-		BANKSEL	    PSMC3PHH
-		MOVWF	    PSMC3PHH
-		BANKSEL	    PSMC1PHL
-		MOVWF	    PSMC1PHL
-		BANKSEL	    PSMC2PHL
-		MOVWF	    PSMC2PHL
-		BANKSEL	    PSMC3PHL
-		MOVWF	    PSMC3PHL
-
-		BANKSEL	    PSMC1CON
-		MOVLW	    0XC0
-		MOVWF	    PSMC1CON
-		BANKSEL	    PSMC2CON
-		MOVWF	    PSMC2CON
-		BANKSEL	    PSMC3CON
-		MOVWF	    PSMC3CON
-
 		BANKSEL	    PORTA
 		CLRF	    EU_FLAG
 		CLRF	    PLAYER_HIT
-		MOVLW	    0xFF
-		MOVWF	    P1_R
-		CLRF	    P1_G
-		CLRF	    P1_B
-		MOVLW	    0xFF
-		MOVWF	    P2_B
-		CLRF	    P2_G
-		CLRF	    P2_R
 
 		RETURN					;RETURN TO .asm FILE

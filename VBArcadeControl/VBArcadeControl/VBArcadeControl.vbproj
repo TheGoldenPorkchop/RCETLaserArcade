@@ -132,6 +132,12 @@
     </Compile>
     <Compile Include="Classes\ArcadeTarget.vb" />
     <Compile Include="Classes\LaserArcade.vb" />
+    <Compile Include="LightningGameForm.Designer.vb">
+      <DependentUpon>LightningGameForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LightningGameForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -158,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ArcadeControlForm.resx">
       <DependentUpon>ArcadeControlForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LightningGameForm.resx">
+      <DependentUpon>LightningGameForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -197,6 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bengal.ico" />
+    <None Include="Resources\UIPlayer3.png" />
+    <None Include="Resources\UIPlayer4.png" />
+    <None Include="Resources\UIPlayer2.png" />
+    <None Include="Resources\UIPlayer1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

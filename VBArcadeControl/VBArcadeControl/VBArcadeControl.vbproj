@@ -154,6 +154,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Player.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
@@ -206,10 +207,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bengal.ico" />
+    <None Include="Resources\UIPlayer1.png" />
+    <None Include="Resources\UIPlayer2.png" />
     <None Include="Resources\UIPlayer3.png" />
     <None Include="Resources\UIPlayer4.png" />
-    <None Include="Resources\UIPlayer2.png" />
-    <None Include="Resources\UIPlayer1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

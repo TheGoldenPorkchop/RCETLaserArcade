@@ -1,15 +1,4 @@
-﻿'TO DO LIST
-'CHANGE BAUD RATE TO 2400
-'MOVE TO UART CLASS
-'SETUP CONNECT/VERIFICATION PROCESS
-'WRITE I2C ENABLE
-'WRITE I2C DISABLE
-'READ I2C DATA
-'READ SETTINGS
-'UPDATE PLAYER COLOR
-'CALLIBRATE POSITIONS
-
-'→
+﻿'→
 '===============================
 'UARTController Class
 '
@@ -24,7 +13,7 @@
 '===============================
 Public Class UARTController
 
-    '==============FIELDS/STATE===============
+#Region "==============FIELDS/STATE==============="
 
     'Sets up Class-Level Serial Port Object
     Private serialPortJimmy As System.IO.Ports.SerialPort
@@ -35,6 +24,18 @@ Public Class UARTController
         Master
         Slave
         Blaster
+    End Enum
+
+    'Internal command identifiers
+    Private Enum UartCommand
+        VerifyDevice        ' $V
+        I2CWrite            ' $W
+        I2CRead             ' $R
+        ReadSettings        ' $S
+        UpdatePlayerColor   ' $C
+        CalibratePositions  ' $P
+        UpdateLEDs          ' $L
+        SetI2CSlaveAddress  ' $A
     End Enum
 
     'Creates a field to store the device type (None, Master, Slave, Blaster)
@@ -58,7 +59,12 @@ Public Class UARTController
     Public Event ConnectOpen()
     Public Event ConnectClose()
 
-    '==============CONSTRUCTOR===============
+    'Invalid-command & invalid-address events
+    Public Event UnsupportedCommand(commandName As String, device As ConnectedDeviceType)
+    Public Event InvalidI2CAddress(address As Byte)
+#End Region
+
+#Region "==============CONSTRUCTOR==============="
     'This will run when someone creates a new UARTController
     'Instantiate the SerialPort object and set all default settings
     Public Sub New()
@@ -73,8 +79,9 @@ Public Class UARTController
         Me.serialPortJimmy.Parity = IO.Ports.Parity.None
         Me.serialPortJimmy.StopBits = IO.Ports.StopBits.One
     End Sub
+#End Region
 
-    '==============CONNECT METHODS===============
+#Region "==============CONNECT METHODS==============="
     'Process:
     'Sets up the COMPORT name (ex. "COM3")
     'Opens the serial port
@@ -82,7 +89,6 @@ Public Class UARTController
     'After send, wait for the response "$LA" (4 BYTES)
     'If the response Is valid → mark device As verified
     'If anything goes wrong → close port and raise DeviceVerificationFailed event
-
 
     Public Function Connect(portName As String) As Boolean
         'Reset states each time a connection is attempted
@@ -113,19 +119,17 @@ Public Class UARTController
             serialPortJimmy.Open()
             RaiseEvent ConnectOpen()
 
-            '-----------------------------
-            ' Send Device Verification: "$V"
-            '-----------------------------
+            '====Send Device Verification: "$V====
             'This will transmit 2 bytes: "$" & "V"
             serialPortJimmy.Write("$V")
 
-            '-----------------------------
-            ' Read 4-byte verification response
-            ' Expected patterns:
-            '   $ L A B  -> Blaster
-            '   $ L A M  -> Master
-            '   $ L A S  -> Slave
-            '-----------------------------
+            '====Read 4-byte verification response====
+
+            'Expected Bytes:
+            '$ L A B  → Blaster
+            '$ L A M  → Master
+            '$ L A S  → Slave
+
             Dim response(3) As Byte
             Dim bytesRead As Integer = 0
 
@@ -191,5 +195,241 @@ Public Class UARTController
             Return False
         End Try
     End Function
+#End Region
 
+#Region "==============ASSIGN DEVICE COMMANDS=============="
+    'This block is responsible for retrieving a command
+    'Then we return true if/only if the device can use the command
+
+    'Return a readable command name ("$W")
+    Private Function GetCommandName(cmd As UartCommand) As String
+        Select Case cmd
+            Case UartCommand.VerifyDevice : Return "$V"
+            Case UartCommand.I2CWrite : Return "$W"
+            Case UartCommand.I2CRead : Return "$R"
+            Case UartCommand.ReadSettings : Return "$S"
+            Case UartCommand.UpdatePlayerColor : Return "$C"
+            Case UartCommand.CalibratePositions : Return "$P"
+            Case UartCommand.UpdateLEDs : Return "$L"
+            Case UartCommand.SetI2CSlaveAddress : Return "$A"
+            Case Else : Return cmd.ToString()
+        End Select
+    End Function
+
+    'Return True if the currently device is allowed to use the command
+    Private Function DeviceSupportsCommand(cmd As UartCommand) As Boolean
+        Select Case _deviceType
+
+            Case ConnectedDeviceType.Master
+                'Master only: I2C Write, I2C Read
+                'All devices: Update Player Color
+                Select Case cmd
+                    Case UartCommand.VerifyDevice,
+                         UartCommand.I2CWrite,
+                         UartCommand.I2CRead,
+                         UartCommand.UpdatePlayerColor
+                        Return True
+                End Select
+
+            Case ConnectedDeviceType.Slave
+                'Slave only: Calibrate Positions, Update LEDs
+                'Slave + Blaster: Read Settings
+                'All devices: Update Player Color
+                'New Addition: Set I2C Slave Address
+                Select Case cmd
+                    Case UartCommand.VerifyDevice,
+                         UartCommand.ReadSettings,
+                         UartCommand.UpdatePlayerColor,
+                         UartCommand.CalibratePositions,
+                         UartCommand.UpdateLEDs,
+                        UartCommand.SetI2CSlaveAddress
+                        Return True
+                End Select
+
+            Case ConnectedDeviceType.Blaster
+                'Slave + Blaster: Read Settings
+                'All devices: Update Player Color
+                Select Case cmd
+                    Case UartCommand.VerifyDevice,
+                         UartCommand.ReadSettings,
+                         UartCommand.UpdatePlayerColor
+                        Return True
+                End Select
+
+            Case ConnectedDeviceType.None
+                'No device / not verified yet then nothing allowed
+                Return False
+
+        End Select
+
+        Return False
+    End Function
+#End Region
+
+#Region "==============GUARD FOR ALL COMMAND SEND METHODS=============="
+    'This is acting as a prerequisite check before sending any command
+    'It checks: 
+    '  - Device is verified
+    '  - Serial port is open
+    '  - Device supports the command
+    Private Function EnsureCanSend(cmd As UartCommand) As Boolean
+        'Must be verified first
+        If Not _deviceVerified Then
+            RaiseEvent DeviceVerificationFailed(
+                "Cannot send " & GetCommandName(cmd) & " – device not verified.")
+            Return False
+        End If
+
+        'Serial port must be open
+        If serialPortJimmy Is Nothing OrElse Not serialPortJimmy.IsOpen Then
+            RaiseEvent DeviceVerificationFailed(
+                "Cannot send " & GetCommandName(cmd) & " – serial port not open.")
+            Return False
+        End If
+
+        'Device must support this command
+        If Not DeviceSupportsCommand(cmd) Then
+            RaiseEvent UnsupportedCommand(GetCommandName(cmd), _deviceType)
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    'Small helper to send UART packet
+    Private Sub SendPacket(ParamArray bytes() As Byte)
+        serialPortJimmy.Write(bytes, 0, bytes.Length)
+    End Sub
+#End Region
+
+#Region "==============COMMAND SEND METHODS==============="
+
+    '====MASTER: $W addr data====
+
+    Public Sub SendI2CWrite(addr As Byte, data As Byte)
+        'Address must be in 7-bit range
+        If addr > 127 Then
+            RaiseEvent InvalidI2CAddress(addr)
+            Exit Sub
+        End If
+
+        'Check verification, port state, and device support
+        If Not EnsureCanSend(UartCommand.I2CWrite) Then Exit Sub
+
+        'Packet: "$W" + addr + data
+        SendPacket(
+            Asc("$"c),
+            Asc("W"c),
+            addr,
+            data)
+    End Sub
+
+
+    '====MASTER: $R addr====
+
+    Public Sub SendI2CRead(addr As Byte)
+        If addr > 127 Then
+            RaiseEvent InvalidI2CAddress(addr)
+            Exit Sub
+        End If
+
+        If Not EnsureCanSend(UartCommand.I2CRead) Then Exit Sub
+
+        'Packet: "$R" + addr
+        SendPacket(
+            Asc("$"c),
+            Asc("R"c),
+            addr)
+    End Sub
+
+
+    '====SLAVE/BLASTER: $S====
+    'Only used for trouble shooting, not normally used in operation
+    'Only in the calibration menu
+    'Read current settings for troubleshooting
+
+    'IMPORTANT:
+    'THIS SECTION ONLY SENDS A READ SETTINGS COMMAND IT CURRENTLY
+    'DOES NOT RECEIVE THE RESPONSE, TO MAKE THINGS EASIER,
+    'DUMP THE DATA INTO CONFIG. DONT TRY TO PARSE DATA HERE
+
+    Public Sub SendReadSettings()
+        If Not EnsureCanSend(UartCommand.ReadSettings) Then Exit Sub
+
+        'Packet: "$S"
+        SendPacket(
+            Asc("$"c),
+            Asc("S"c))
+    End Sub
+
+    '====SLAVE ONLY: $P f hi lo====
+    Public Sub SendCalibratePositions(flags As Byte, hi As Byte, lo As Byte)
+        If Not EnsureCanSend(UartCommand.CalibratePositions) Then Exit Sub
+
+        'Packet: "$P" + flags + hi + lo
+        SendPacket(
+            Asc("$"c),
+            Asc("P"c),
+            flags,
+            hi,
+            lo)
+    End Sub
+
+
+    '====SLAVE ONLY: $L n====
+    Public Sub SendUpdateLEDs(ledCount As Byte)
+        If Not EnsureCanSend(UartCommand.UpdateLEDs) Then Exit Sub
+
+        'Packet: "$L" + ledCount
+        SendPacket(
+            Asc("$"c),
+            Asc("L"c),
+            ledCount)
+    End Sub
+
+    Public Sub SendI2CSlaveAddress(newAddress As Byte)
+        'Address must be in 7-bit range
+        If newAddress < 1 OrElse newAddress > 127 Then
+            RaiseEvent InvalidI2CAddress(newAddress)
+            Exit Sub
+        End If
+
+        'Check verification, port state, and device support
+        If Not EnsureCanSend(UartCommand.SetI2CSlaveAddress) Then Exit Sub
+        'Packet: "$A" + newAddress
+        SendPacket(
+            Asc("$"c),
+            Asc("A"c),
+            newAddress)
+    End Sub
+
+    '====ALL DEVICES: $C p G R B====
+    Public Sub SendUpdatePlayerColor(player As Byte, g As Byte, r As Byte, b As Byte)
+        If Not EnsureCanSend(UartCommand.UpdatePlayerColor) Then Exit Sub
+
+        'Packet: "$C" + player + G + R + B
+        SendPacket(
+            Asc("$"c),
+            Asc("C"c),
+            player,
+            g,
+            r,
+            b)
+    End Sub
+#End Region
+
+#Region "==============DATA PARSING==============="
+    'TO DO LIST:
+    'New obj needs to be created to serve as a container for the settings
+    'We dont need to interpret the data but will need to have a check, $ !, !
+    'If the byte does not start and end with that, lets assume parse failed
+    'Create new event for failed parse event
+    'update read settings?
+
+    '=====================
+    'BlasterSettings Class
+
+    'This will serve as a data container for the Blaster ReadSettings:
+
+#End Region
 End Class

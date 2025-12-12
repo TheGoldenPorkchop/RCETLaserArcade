@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C022B0A5-B3F7-455C-9CAD-55F10A905684}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>VBArcadeControl.UARTTestModule</StartupObject>
+    <StartupObject>VBArcadeControl.My.MyApplication</StartupObject>
     <RootNamespace>VBArcadeControl</RootNamespace>
     <AssemblyName>RCET Laser Arcade</AssemblyName>
     <FileAlignment>512</FileAlignment>
-    <MyType>WindowsFormsWithCustomSubMain</MyType>
+    <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>

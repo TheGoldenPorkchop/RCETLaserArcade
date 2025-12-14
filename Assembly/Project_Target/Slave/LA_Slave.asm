@@ -1,16 +1,16 @@
 ;************************************************************************************
 ;										    *
-;   Filename:	    LA_Slave.asm						    *
-;   Date:	    April 23, 2025						    *
-;   File Version:   2								    *
-;   Author:	    Alex Wheelock and Andrew Keller				    *
+;   Filename:	    SLAVE_SUBROUTINES.inc					    *
+;   Date:	    December 13, 2025						    *
+;   File Version:   3								    *
+;   Author:	    Andrew Keller and Rudy Earnest		                    *
 ;   Company:	    Idaho State University					    *
-;   Description:    Assembly file for the target slave for a laser shooting arcade. *
-;		    Communicates with the Master via I2C. May be enabled or	    *
-;		    disabled using I2C commands. When an I2C read is executed, the  *
-;		    slave responds with the current status of the target. The I2C   *
-;		    address is set during PIC setup utilizing switches connected    *
-;		    to PORTA.							    *
+;   Description:    Contains all subroutines needed for the Laser Shooting Game     *
+;		    target slave. Subroutines include I2C communications, recording *
+;		    player hits, and enabling/disabling the target. The I2C	    *
+;		    communications includes the ability to both receive data from   *
+;		    the master as well as the ability to respond to read requests   *
+;		    from the master. When a hit is detected, the LED is flashed.    *
 ;										    *
 ;************************************************************************************
 
@@ -18,13 +18,15 @@
 ;										    *
 ;   Revision History:								    *
 ;										    *
-;   1:	  Got everything for the gun working the way that I think it should with    *
-;	  base features.							    *
+;   1:	Initialize file, get everything working the way that I thought it should    *
+;	work.									    *
 ;										    *
 ;   2:	  I2C communications for enabling/disabling the target as well as reporting *
 ;          any player hits to the target when the target is enabled.		    *
+;                                                                                   *
+;   3:  Update to V2 of the slave                                                   *
 ;										    *
-;************************************************************************************
+;************************************************************************************		
 		
 		#include "SLAVE.inc"      		; processor specific variable definitions
 		#INCLUDE <SLAVE_SETUP.inc>		; Custom setup file for the PIC16F883 micro-controller

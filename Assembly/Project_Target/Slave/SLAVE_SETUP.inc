@@ -1,12 +1,16 @@
 ;************************************************************************************
 ;										    *
-;   Filename:	    SLAVE_SETUP.inc						    *
-;   Date:	    April 23, 2025						    *
-;   File Version:   2								    *
-;   Author:	    Alex Wheelock and Andrew Keller				    *
+;   Filename:	    SLAVE_SUBROUTINES.inc					    *
+;   Date:	    December 13, 2025						    *
+;   File Version:   3								    *
+;   Author:	    Andrew Keller and Rudy Earnest		                    *
 ;   Company:	    Idaho State University					    *
-;   Description:    Firmware for setting up a PIC16F1788 for the target slave of    *
-;		    the Laser Shooting Game project.				    *
+;   Description:    Contains all subroutines needed for the Laser Shooting Game     *
+;		    target slave. Subroutines include I2C communications, recording *
+;		    player hits, and enabling/disabling the target. The I2C	    *
+;		    communications includes the ability to both receive data from   *
+;		    the master as well as the ability to respond to read requests   *
+;		    from the master. When a hit is detected, the LED is flashed.    *
 ;										    *
 ;************************************************************************************
 
@@ -14,66 +18,57 @@
 ;										    *
 ;   Revision History:								    *
 ;										    *
-;   1:	Iniitialize file, setup how I think it should be setup for the project.	    *
+;   1:	Initialize file, get everything working the way that I thought it should    *
+;	work.									    *
 ;										    *
-;   2:	I2C communications for enabling/disabling the target as well as reporting   *
-;       any player hits to the target when the target is enabled.		    *
+;   2:	  I2C communications for enabling/disabling the target as well as reporting *
+;          any player hits to the target when the target is enabled.		    *
+;                                                                                   *
+;   3:  Update to V2 of the slave                                                   *
 ;										    *
-;************************************************************************************
+;************************************************************************************		
 		
 ;===============================================================================================================================*
-;							   PORTA BITMAP								*
+;                                                          PORTA BITMAP                                                         *
 ;===============================================================================================================================*		
-;		|		|		|		|		|		|		|		*
-;	7	|	6	|	5	|	4	|	3	|	2	|	1	|	0	*
+;       7       |       6       |       5       |       4       |       3       |       2       |       1       |       0       *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*	
-;DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	*
-;INPUT		|INPUT		|INPUT		|INPUT		|INPUT		|INPUT		|INPUT		|INPUT		*
+;    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    *
+;     INPUT     |    OUTPUT     |     INPUT     |     INPUT     |    Output     |    Output     |    Output     |    Output     *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*		
-;I2C Address	|I2C Address	|I2C Address	|I2C Address	|I2C Address	|I2C Address	|I2C Address	|I2C Address	*
-;Switch		|Switch		|Switch		|Switch		|Switch		|Switch		|Switch		|Switch		*
-;		|		|		|		|		|		|		|(Ignored in	*
-;		|		|		|		|		|		|		|7-bit address)	*		
+;  PSMC CLKIN   |    CLKOUT     |      N/C      |      N/C      |  STEPPER DIR  |    ENABLE     | HIT INDICATOR |  WS2812B LED  *
+;               |               |               |               |               | INDICATOR LED |      LED      |  DATA INPUT   *		
 ;-------------------------------------------------------------------------------------------------------------------------------*
 		
 ;===============================================================================================================================*
-;							   PORTB BITMAP								*
+;                                                          PORTB BITMAP                                                         *
 ;===============================================================================================================================*		
-;		|		|		|		|		|		|		|		*
-;	7	|	6	|	5	|	4	|	3	|	2	|	1	|	0	*
+;       7       |       6       |       5       |       4       |       3       |       2       |       1       |       0       *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*	
-;DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	*
-;INPUT		|INPUT		|INPUT		|OUTPUT		|OUTPUT		|OUTPUT		|INPUT		|INPUT		*
+;    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    *
+;     INPUT     |    OUTPUT     |     INPUT     |     INPUT     |     INPUT     |     INPUT     |     INPUT     |     INPUT     *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*		
-;UNUSED		|UNUSED		|UNUSED		|RGB LEDS BLUE	|RGB LEDS RED	|RGB LEDS GREEN	|56kHz IR Input	|38kHz IR Input	*
-;		|		|		|		|		|		|		|		*
-;		|		|		|		|		|		|		|		*
-;		|		|		|		|		|		|		|		*		
+;    UART RX    |    UART TX    |      N/C      |      N/C      |      N/C      |      N/C      |      N/C      |      N/C      *
+;               |               |               |               |               |               |               |               *		
 ;-------------------------------------------------------------------------------------------------------------------------------*
 		
 ;===============================================================================================================================*
-;							   PORTC BITMAP								*
+;                                                          PORTC BITMAP                                                         *
 ;===============================================================================================================================*		
-;		|		|		|		|		|		|		|		*
-;	7	|	6	|	5	|	4	|	3	|	2	|	1	|	0	*
+;       7       |       6       |       5       |       4       |       3       |       2       |       1       |       0       *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*	
-;DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	|DIGITAL	*
-;OUTPUT		|OUTPUT		|OUTPUT		|OUTPUT		|OUTPUT		|OUTPUT		|OUTPUT		|OUTPUT		*
+;    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    |    DIGITAL    *
+;     INPUT     |    OUTPUT     |    OUTPUT     |     INPUT     |     INPUT     |    OUTPUT     |     INPUT     |    OUTPUT     *
 ;---------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------*		
-;UNUSED		|UNUSED		|UNUSED		|I2C SDA	|I2C SCL	|UNUSED		|UNUSED		|UNUSED		*
-;		|		|		|		|		|		|		|		*
-;		|		|		|		|		|		|		|		*
-;		|		|		|		|		|		|		|		*		
-;-------------------------------------------------------------------------------------------------------------------------------*		
-		
+;      N/C      |    SERVO 2    |    SERVO 3    |    I2C SDA    |    I2C SCL    | STEPPER STEP  |      N/C      |    SERVO 1    *
+;               |               |               |               |               |               |               |               *		
+;-------------------------------------------------------------------------------------------------------------------------------*
+	
 ;EEPROM Memory Map
      ;**** Do not under any circumstances ****
      ;**** Use EEPROM row 0 it is evil ****
     
 ;The byte at address 0x10 is used to store the I2C address of the target slave device.
-;The byte at address 0x11 is used to store the static red value
-;The byte at address 0x12 is used to store the static green value
-;The byte at address 0x13 is used to store the static blue value
 ;The byte at address 0x14 is used to store the LED number value
      
 ;The byte at address 0x20 is used to store the player 1 red value.
@@ -89,7 +84,6 @@
 ;The byte at address 0x2A is used to store the player 4 green value.
 ;The byte at address 0x2B is used to store the player 4 blue value.
      
-;The byte at address 0x30 is used to store the Positions Output byte
 ;The byte at address 0x31 is used to store the high byte of servo 1 enabled
 ;The byte at address 0x32 is used to store the low byte of servo 1 enabled
 ;The byte at address 0x33 is used to store the high byte of servo 1 disabled
@@ -106,7 +100,7 @@
 		
   
     
-    EEPROM_ADDR   EQU 0x20
+  EEPROM_ADDR   EQU 0x20
   EEPROM_DATA   EQU 0x21
   EEPROM_SAVE   EQU 0x22
   ;Status Registers
@@ -229,7 +223,7 @@ INITIALIZE
 ;*** TMR1 SETUP ****
 		
 		BANKSEL	    T1CON
-		MOVLW	    0b00110000			;ENABLE & SELECT TMR1 INSTRUCTION CLOCK (FOSC/4), SET PRESCALE TO 1:8, DISABLE TMR1 AT THIS POINT
+		MOVLW	    0x30			;ENABLE & SELECT TMR1 INSTRUCTION CLOCK (FOSC/4), SET PRESCALE TO 1:8, DISABLE TMR1 AT THIS POINT
 		BANKSEL	    T1GCON
 		CLRF	    T1GCON			;DISABLE TMR1 GATE
  
@@ -608,5 +602,6 @@ INITIALIZE
 		BANKSEL	    PORTA
 		CLRF	    EU_FLAG
 		CLRF	    PLAYER_HIT
+		CALL	    DISABLE_TARGET
 
 		RETURN					;RETURN TO .asm FILE

@@ -133,6 +133,12 @@
     <Compile Include="Classes\ArcadeTarget.vb" />
     <Compile Include="Classes\UARTController.vb" />
     <Compile Include="Classes\LaserArcade.vb" />
+    <Compile Include="StartupForm.Designer.vb">
+      <DependentUpon>StartupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StartupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UARTTestModule.vb" />
     <Compile Include="LightningGameForm.Designer.vb">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
@@ -177,6 +183,9 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.resx">
+      <DependentUpon>StartupForm.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -209,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bengal.ico" />
+    <None Include="Resources\Bengal.png" />
     <None Include="Resources\UIPlayer1.png" />
     <None Include="Resources\UIPlayer2.png" />
     <None Include="Resources\UIPlayer3.png" />

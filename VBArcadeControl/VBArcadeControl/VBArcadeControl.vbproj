@@ -141,6 +141,12 @@
     <Compile Include="Classes\PlayerColors.vb" />
     <Compile Include="Classes\UARTController.vb" />
     <Compile Include="Classes\LaserArcade.vb" />
+    <Compile Include="SlaveConfigurationForm.Designer.vb">
+      <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SlaveConfigurationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="StartupForm.Designer.vb">
       <DependentUpon>StartupForm.vb</DependentUpon>
     </Compile>
@@ -170,7 +176,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Player.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
@@ -193,6 +198,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlaveConfigurationForm.resx">
+      <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.resx">
       <DependentUpon>StartupForm.vb</DependentUpon>

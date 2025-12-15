@@ -71,7 +71,7 @@ Partial Class BlasterConfigurationForm
         Me.PlayerColorGroupBox.Size = New System.Drawing.Size(357, 49)
         Me.PlayerColorGroupBox.TabIndex = 6
         Me.PlayerColorGroupBox.TabStop = False
-        Me.PlayerColorGroupBox.Text = "Player Number"
+        Me.PlayerColorGroupBox.Text = "Player Color"
         '
         'PlayerColorButton
         '

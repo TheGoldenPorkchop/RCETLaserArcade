@@ -37,8 +37,9 @@
                     End If
                 Case UARTController.ConnectedDeviceType.Slave
                     If MsgBox($"Successfully connected to the Laser Arcade Slave at {COMPortComboBox.Text}.{vbNewLine}Would you like to configure the slave?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-
-                        MsgBox("GOTO Slave Configuration Form")
+                        Dim SlaveConfigForm As New SlaveConfigurationForm(SelectedDevice)
+                        SlaveConfigForm.Show()
+                        Me.Hide()
                     End If
                 Case UARTController.ConnectedDeviceType.Blaster
                     If MsgBox($"Successfully connected to the Laser Arcade Blaster at {COMPortComboBox.Text}.{vbNewLine}Would you like to configure the blaster?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then

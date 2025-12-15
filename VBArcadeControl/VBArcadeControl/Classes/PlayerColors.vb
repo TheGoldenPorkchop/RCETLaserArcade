@@ -154,6 +154,19 @@ Public Class PlayerColors
             FileClose(1)
         Else
             'file does not exist, create defaults
+            _PlayerOneRed = 255
+            _PlayerOneGreen = 255
+            _PlayerOneBlue = 0
+            _PlayerTwoRed = 255
+            _PlayerTwoGreen = 0
+            _PlayerTwoBlue = 0
+            _PlayerThreeRed = 255
+            _PlayerThreeGreen = 0
+            _PlayerThreeBlue = 255
+            _PlayerFourRed = 0
+            _PlayerFourGreen = 0
+            _PlayerFourBlue = 255
+            SaveNewColors()
         End If
     End Sub
 

@@ -28,11 +28,11 @@ Partial Class StartupForm
         Me.COMGroupBox = New System.Windows.Forms.GroupBox()
         Me.COMPortComboBox = New System.Windows.Forms.ComboBox()
         Me.FormLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
-        Me.TitleLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
-        Me.TitleLabel = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.AboutButton = New System.Windows.Forms.Button()
         Me.COMRefreshTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.TitleLabel = New System.Windows.Forms.Label()
+        Me.TitleLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         CType(Me.BennyPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.COMGroupBox.SuspendLayout()
         Me.FormLayoutPanel.SuspendLayout()
@@ -100,6 +100,49 @@ Partial Class StartupForm
         Me.FormLayoutPanel.Size = New System.Drawing.Size(776, 426)
         Me.FormLayoutPanel.TabIndex = 2
         '
+        'AboutButton
+        '
+        Me.AboutButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.AboutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AboutButton.Location = New System.Drawing.Point(623, 373)
+        Me.AboutButton.MaximumSize = New System.Drawing.Size(150, 50)
+        Me.AboutButton.Name = "AboutButton"
+        Me.AboutButton.Size = New System.Drawing.Size(150, 50)
+        Me.AboutButton.TabIndex = 5
+        Me.AboutButton.Text = "About"
+        Me.AboutButton.UseVisualStyleBackColor = True
+        '
+        'COMRefreshTimer
+        '
+        Me.COMRefreshTimer.Interval = 500
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Label1.Location = New System.Drawing.Point(3, 98)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(376, 66)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Please select a COM Port using the dropdown below:"
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'TitleLabel
+        '
+        Me.TitleLabel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TitleLabel.Location = New System.Drawing.Point(3, 0)
+        Me.TitleLabel.Name = "TitleLabel"
+        Me.TitleLabel.Size = New System.Drawing.Size(376, 98)
+        Me.TitleLabel.TabIndex = 2
+        Me.TitleLabel.Text = "RCET Laser Arcade"
+        Me.TitleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
         'TitleLayoutPanel
         '
         Me.TitleLayoutPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
@@ -116,49 +159,6 @@ Partial Class StartupForm
         Me.TitleLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
         Me.TitleLayoutPanel.Size = New System.Drawing.Size(382, 164)
         Me.TitleLayoutPanel.TabIndex = 4
-        '
-        'TitleLabel
-        '
-        Me.TitleLabel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TitleLabel.Location = New System.Drawing.Point(3, 0)
-        Me.TitleLabel.Name = "TitleLabel"
-        Me.TitleLabel.Size = New System.Drawing.Size(376, 98)
-        Me.TitleLabel.TabIndex = 2
-        Me.TitleLabel.Text = "RCET Laser Arcade"
-        Me.TitleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Label1.Location = New System.Drawing.Point(3, 98)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(376, 66)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Please select a COM Port using the dropdown below:"
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'AboutButton
-        '
-        Me.AboutButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.AboutButton.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.AboutButton.Location = New System.Drawing.Point(623, 373)
-        Me.AboutButton.MaximumSize = New System.Drawing.Size(150, 50)
-        Me.AboutButton.Name = "AboutButton"
-        Me.AboutButton.Size = New System.Drawing.Size(150, 50)
-        Me.AboutButton.TabIndex = 5
-        Me.AboutButton.Text = "About"
-        Me.AboutButton.UseVisualStyleBackColor = True
-        '
-        'COMRefreshTimer
-        '
-        Me.COMRefreshTimer.Interval = 500
         '
         'StartupForm
         '
@@ -181,10 +181,10 @@ Partial Class StartupForm
     Friend WithEvents BennyPictureBox As PictureBox
     Friend WithEvents COMGroupBox As GroupBox
     Friend WithEvents FormLayoutPanel As TableLayoutPanel
-    Friend WithEvents TitleLabel As Label
-    Friend WithEvents TitleLayoutPanel As TableLayoutPanel
-    Friend WithEvents Label1 As Label
     Friend WithEvents COMPortComboBox As ComboBox
     Friend WithEvents AboutButton As Button
     Friend WithEvents COMRefreshTimer As Timer
+    Friend WithEvents TitleLayoutPanel As TableLayoutPanel
+    Friend WithEvents TitleLabel As Label
+    Friend WithEvents Label1 As Label
 End Class

@@ -130,6 +130,12 @@
       <DependentUpon>ArcadeControlForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BlasterConfigurationForm.Designer.vb">
+      <DependentUpon>BlasterConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BlasterConfigurationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Classes\ArcadeTarget.vb" />
     <Compile Include="Classes\PlayerColors.vb" />
     <Compile Include="Classes\UARTController.vb" />
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ArcadeControlForm.resx">
       <DependentUpon>ArcadeControlForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BlasterConfigurationForm.resx">
+      <DependentUpon>BlasterConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LightningGameForm.resx">
       <DependentUpon>LightningGameForm.vb</DependentUpon>

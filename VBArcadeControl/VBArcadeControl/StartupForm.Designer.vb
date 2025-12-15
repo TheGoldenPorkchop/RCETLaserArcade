@@ -22,6 +22,7 @@ Partial Class StartupForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(StartupForm))
         Me.BennyPictureBox = New System.Windows.Forms.PictureBox()
         Me.COMGroupBox = New System.Windows.Forms.GroupBox()
@@ -31,6 +32,7 @@ Partial Class StartupForm
         Me.TitleLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.AboutButton = New System.Windows.Forms.Button()
+        Me.COMRefreshTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.BennyPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.COMGroupBox.SuspendLayout()
         Me.FormLayoutPanel.SuspendLayout()
@@ -154,6 +156,10 @@ Partial Class StartupForm
         Me.AboutButton.Text = "About"
         Me.AboutButton.UseVisualStyleBackColor = True
         '
+        'COMRefreshTimer
+        '
+        Me.COMRefreshTimer.Interval = 500
+        '
         'StartupForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -180,4 +186,5 @@ Partial Class StartupForm
     Friend WithEvents Label1 As Label
     Friend WithEvents COMPortComboBox As ComboBox
     Friend WithEvents AboutButton As Button
+    Friend WithEvents COMRefreshTimer As Timer
 End Class

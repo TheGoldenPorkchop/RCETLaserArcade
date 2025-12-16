@@ -37,10 +37,10 @@ Partial Class SlaveConfigurationForm
         Me.TitleLabel = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.I2CAddressGroupBox = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.I2CAddressTextBox = New System.Windows.Forms.TextBox()
         Me.SaveButton = New System.Windows.Forms.Button()
         Me.LEDNumberGroupBox = New System.Windows.Forms.GroupBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.LEDNumberTextBox = New System.Windows.Forms.TextBox()
         Me.ServoLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.Servo1ENGroupBox = New System.Windows.Forms.GroupBox()
         Me.Servo1ENTrackBar = New System.Windows.Forms.TrackBar()
@@ -252,7 +252,7 @@ Partial Class SlaveConfigurationForm
         '
         Me.I2CAddressGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.I2CAddressGroupBox.Controls.Add(Me.TextBox1)
+        Me.I2CAddressGroupBox.Controls.Add(Me.I2CAddressTextBox)
         Me.I2CAddressGroupBox.Location = New System.Drawing.Point(3, 103)
         Me.I2CAddressGroupBox.Name = "I2CAddressGroupBox"
         Me.I2CAddressGroupBox.Size = New System.Drawing.Size(540, 49)
@@ -260,15 +260,16 @@ Partial Class SlaveConfigurationForm
         Me.I2CAddressGroupBox.TabStop = False
         Me.I2CAddressGroupBox.Text = "I2C Address"
         '
-        'TextBox1
+        'I2CAddressTextBox
         '
-        Me.TextBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.I2CAddressTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox1.Location = New System.Drawing.Point(10, 19)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(524, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.I2CAddressTextBox.Location = New System.Drawing.Point(10, 19)
+        Me.I2CAddressTextBox.Name = "I2CAddressTextBox"
+        Me.I2CAddressTextBox.Size = New System.Drawing.Size(524, 20)
+        Me.I2CAddressTextBox.TabIndex = 0
+        Me.I2CAddressTextBox.Text = "1"
         '
         'SaveButton
         '
@@ -286,7 +287,7 @@ Partial Class SlaveConfigurationForm
         '
         Me.LEDNumberGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LEDNumberGroupBox.Controls.Add(Me.TextBox2)
+        Me.LEDNumberGroupBox.Controls.Add(Me.LEDNumberTextBox)
         Me.LEDNumberGroupBox.Location = New System.Drawing.Point(3, 158)
         Me.LEDNumberGroupBox.Name = "LEDNumberGroupBox"
         Me.LEDNumberGroupBox.Size = New System.Drawing.Size(540, 49)
@@ -294,15 +295,16 @@ Partial Class SlaveConfigurationForm
         Me.LEDNumberGroupBox.TabStop = False
         Me.LEDNumberGroupBox.Text = "Number of LEDs"
         '
-        'TextBox2
+        'LEDNumberTextBox
         '
-        Me.TextBox2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.LEDNumberTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TextBox2.Location = New System.Drawing.Point(10, 19)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(524, 20)
-        Me.TextBox2.TabIndex = 0
+        Me.LEDNumberTextBox.Location = New System.Drawing.Point(10, 19)
+        Me.LEDNumberTextBox.Name = "LEDNumberTextBox"
+        Me.LEDNumberTextBox.Size = New System.Drawing.Size(524, 20)
+        Me.LEDNumberTextBox.TabIndex = 0
+        Me.LEDNumberTextBox.Text = "1"
         '
         'ServoLayoutPanel
         '
@@ -527,7 +529,7 @@ Partial Class SlaveConfigurationForm
     Friend WithEvents Label1 As Label
     Friend WithEvents SaveButton As Button
     Private WithEvents I2CAddressGroupBox As GroupBox
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents I2CAddressTextBox As TextBox
     Friend WithEvents PlayerFourColorPictureBox As PictureBox
     Friend WithEvents PlayerThreeColorPictureBox As PictureBox
     Friend WithEvents PlayerTwoColorPictureBox As PictureBox
@@ -536,7 +538,7 @@ Partial Class SlaveConfigurationForm
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Private WithEvents LEDNumberGroupBox As GroupBox
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents LEDNumberTextBox As TextBox
     Friend WithEvents ServoLayoutPanel As TableLayoutPanel
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
     Private WithEvents Servo3DISGroupBox As GroupBox

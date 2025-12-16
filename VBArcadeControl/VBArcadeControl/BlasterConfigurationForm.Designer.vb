@@ -22,6 +22,7 @@ Partial Class BlasterConfigurationForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BlasterConfigurationForm))
         Me.FormLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
         Me.PlayerColorGroupBox = New System.Windows.Forms.GroupBox()
         Me.PlayerColorButton = New System.Windows.Forms.Button()
@@ -178,6 +179,7 @@ Partial Class BlasterConfigurationForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(387, 298)
         Me.Controls.Add(Me.FormLayoutPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "BlasterConfigurationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Blaster Configuration"

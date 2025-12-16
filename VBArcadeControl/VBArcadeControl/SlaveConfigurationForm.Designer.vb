@@ -22,7 +22,22 @@ Partial Class SlaveConfigurationForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SlaveConfigurationForm))
         Me.FormLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Servo3DISGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Servo3DISTrackBar = New System.Windows.Forms.TrackBar()
+        Me.Servo2DISGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Servo2DISTrackBar = New System.Windows.Forms.TrackBar()
+        Me.Servo1DISGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Servo1DISTrackBar = New System.Windows.Forms.TrackBar()
+        Me.LEDNumberGroupBox = New System.Windows.Forms.GroupBox()
+        Me.LEDNumberTextBox = New System.Windows.Forms.TextBox()
+        Me.TitleLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
+        Me.TitleLabel = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.I2CAddressGroupBox = New System.Windows.Forms.GroupBox()
+        Me.I2CAddressTextBox = New System.Windows.Forms.TextBox()
         Me.PlayerColorsGroupBox = New System.Windows.Forms.GroupBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -33,44 +48,15 @@ Partial Class SlaveConfigurationForm
         Me.PlayerTwoColorPictureBox = New System.Windows.Forms.PictureBox()
         Me.PlayerColorButton = New System.Windows.Forms.Button()
         Me.PlayerOneColorPictureBox = New System.Windows.Forms.PictureBox()
-        Me.TitleLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
-        Me.TitleLabel = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.I2CAddressGroupBox = New System.Windows.Forms.GroupBox()
-        Me.I2CAddressTextBox = New System.Windows.Forms.TextBox()
         Me.SaveButton = New System.Windows.Forms.Button()
-        Me.LEDNumberGroupBox = New System.Windows.Forms.GroupBox()
-        Me.LEDNumberTextBox = New System.Windows.Forms.TextBox()
         Me.ServoLayoutPanel = New System.Windows.Forms.TableLayoutPanel()
-        Me.Servo1ENGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Servo1ENTrackBar = New System.Windows.Forms.TrackBar()
-        Me.Servo2ENGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Servo2ENTrackBar = New System.Windows.Forms.TrackBar()
         Me.Servo3ENGroupBox = New System.Windows.Forms.GroupBox()
         Me.Servo3ENTrackBar = New System.Windows.Forms.TrackBar()
-        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.Servo3DISGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Servo3DISTrackBar = New System.Windows.Forms.TrackBar()
-        Me.Servo2DISGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Servo2DISTrackBar = New System.Windows.Forms.TrackBar()
-        Me.Servo1DISGroupBox = New System.Windows.Forms.GroupBox()
-        Me.Servo1DISTrackBar = New System.Windows.Forms.TrackBar()
+        Me.Servo2ENGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Servo2ENTrackBar = New System.Windows.Forms.TrackBar()
+        Me.Servo1ENGroupBox = New System.Windows.Forms.GroupBox()
+        Me.Servo1ENTrackBar = New System.Windows.Forms.TrackBar()
         Me.FormLayoutPanel.SuspendLayout()
-        Me.PlayerColorsGroupBox.SuspendLayout()
-        CType(Me.PlayerFourColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PlayerThreeColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PlayerTwoColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PlayerOneColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TitleLayoutPanel.SuspendLayout()
-        Me.I2CAddressGroupBox.SuspendLayout()
-        Me.LEDNumberGroupBox.SuspendLayout()
-        Me.ServoLayoutPanel.SuspendLayout()
-        Me.Servo1ENGroupBox.SuspendLayout()
-        CType(Me.Servo1ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Servo2ENGroupBox.SuspendLayout()
-        CType(Me.Servo2ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Servo3ENGroupBox.SuspendLayout()
-        CType(Me.Servo3ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.Servo3DISGroupBox.SuspendLayout()
         CType(Me.Servo3DISTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -78,6 +64,21 @@ Partial Class SlaveConfigurationForm
         CType(Me.Servo2DISTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Servo1DISGroupBox.SuspendLayout()
         CType(Me.Servo1DISTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.LEDNumberGroupBox.SuspendLayout()
+        Me.TitleLayoutPanel.SuspendLayout()
+        Me.I2CAddressGroupBox.SuspendLayout()
+        Me.PlayerColorsGroupBox.SuspendLayout()
+        CType(Me.PlayerFourColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayerThreeColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayerTwoColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PlayerOneColorPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ServoLayoutPanel.SuspendLayout()
+        Me.Servo3ENGroupBox.SuspendLayout()
+        CType(Me.Servo3ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Servo2ENGroupBox.SuspendLayout()
+        CType(Me.Servo2ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Servo1ENGroupBox.SuspendLayout()
+        CType(Me.Servo1ENTrackBar, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'FormLayoutPanel
@@ -106,6 +107,181 @@ Partial Class SlaveConfigurationForm
         Me.FormLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.FormLayoutPanel.Size = New System.Drawing.Size(546, 468)
         Me.FormLayoutPanel.TabIndex = 1
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Servo3DISGroupBox, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Servo2DISGroupBox, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Servo1DISGroupBox, 0, 0)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 349)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 1
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(540, 49)
+        Me.TableLayoutPanel1.TabIndex = 10
+        '
+        'Servo3DISGroupBox
+        '
+        Me.Servo3DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo3DISGroupBox.Controls.Add(Me.Servo3DISTrackBar)
+        Me.Servo3DISGroupBox.Location = New System.Drawing.Point(363, 3)
+        Me.Servo3DISGroupBox.Name = "Servo3DISGroupBox"
+        Me.Servo3DISGroupBox.Size = New System.Drawing.Size(174, 43)
+        Me.Servo3DISGroupBox.TabIndex = 11
+        Me.Servo3DISGroupBox.TabStop = False
+        Me.Servo3DISGroupBox.Text = "Servo3 - Disabled"
+        '
+        'Servo3DISTrackBar
+        '
+        Me.Servo3DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo3DISTrackBar.Location = New System.Drawing.Point(7, 18)
+        Me.Servo3DISTrackBar.Maximum = 1000
+        Me.Servo3DISTrackBar.Name = "Servo3DISTrackBar"
+        Me.Servo3DISTrackBar.Size = New System.Drawing.Size(161, 45)
+        Me.Servo3DISTrackBar.TabIndex = 0
+        '
+        'Servo2DISGroupBox
+        '
+        Me.Servo2DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo2DISGroupBox.Controls.Add(Me.Servo2DISTrackBar)
+        Me.Servo2DISGroupBox.Location = New System.Drawing.Point(183, 3)
+        Me.Servo2DISGroupBox.Name = "Servo2DISGroupBox"
+        Me.Servo2DISGroupBox.Size = New System.Drawing.Size(174, 43)
+        Me.Servo2DISGroupBox.TabIndex = 10
+        Me.Servo2DISGroupBox.TabStop = False
+        Me.Servo2DISGroupBox.Text = "Servo2 - Disabled"
+        '
+        'Servo2DISTrackBar
+        '
+        Me.Servo2DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo2DISTrackBar.Location = New System.Drawing.Point(7, 18)
+        Me.Servo2DISTrackBar.Maximum = 1000
+        Me.Servo2DISTrackBar.Name = "Servo2DISTrackBar"
+        Me.Servo2DISTrackBar.Size = New System.Drawing.Size(161, 45)
+        Me.Servo2DISTrackBar.TabIndex = 0
+        '
+        'Servo1DISGroupBox
+        '
+        Me.Servo1DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo1DISGroupBox.Controls.Add(Me.Servo1DISTrackBar)
+        Me.Servo1DISGroupBox.Location = New System.Drawing.Point(3, 3)
+        Me.Servo1DISGroupBox.Name = "Servo1DISGroupBox"
+        Me.Servo1DISGroupBox.Size = New System.Drawing.Size(174, 43)
+        Me.Servo1DISGroupBox.TabIndex = 9
+        Me.Servo1DISGroupBox.TabStop = False
+        Me.Servo1DISGroupBox.Text = "Servo1 - Disabled"
+        '
+        'Servo1DISTrackBar
+        '
+        Me.Servo1DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Servo1DISTrackBar.Location = New System.Drawing.Point(7, 18)
+        Me.Servo1DISTrackBar.Maximum = 1000
+        Me.Servo1DISTrackBar.Name = "Servo1DISTrackBar"
+        Me.Servo1DISTrackBar.Size = New System.Drawing.Size(161, 45)
+        Me.Servo1DISTrackBar.TabIndex = 0
+        '
+        'LEDNumberGroupBox
+        '
+        Me.LEDNumberGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LEDNumberGroupBox.Controls.Add(Me.LEDNumberTextBox)
+        Me.LEDNumberGroupBox.Location = New System.Drawing.Point(3, 158)
+        Me.LEDNumberGroupBox.Name = "LEDNumberGroupBox"
+        Me.LEDNumberGroupBox.Size = New System.Drawing.Size(540, 49)
+        Me.LEDNumberGroupBox.TabIndex = 8
+        Me.LEDNumberGroupBox.TabStop = False
+        Me.LEDNumberGroupBox.Text = "Number of LEDs"
+        '
+        'LEDNumberTextBox
+        '
+        Me.LEDNumberTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.LEDNumberTextBox.Location = New System.Drawing.Point(10, 19)
+        Me.LEDNumberTextBox.Name = "LEDNumberTextBox"
+        Me.LEDNumberTextBox.Size = New System.Drawing.Size(524, 20)
+        Me.LEDNumberTextBox.TabIndex = 0
+        Me.LEDNumberTextBox.Text = "1"
+        '
+        'TitleLayoutPanel
+        '
+        Me.TitleLayoutPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitleLayoutPanel.ColumnCount = 1
+        Me.TitleLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TitleLayoutPanel.Controls.Add(Me.TitleLabel, 0, 0)
+        Me.TitleLayoutPanel.Controls.Add(Me.Label1, 0, 1)
+        Me.TitleLayoutPanel.Location = New System.Drawing.Point(3, 3)
+        Me.TitleLayoutPanel.Name = "TitleLayoutPanel"
+        Me.TitleLayoutPanel.RowCount = 2
+        Me.TitleLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
+        Me.TitleLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
+        Me.TitleLayoutPanel.Size = New System.Drawing.Size(540, 94)
+        Me.TitleLayoutPanel.TabIndex = 5
+        '
+        'TitleLabel
+        '
+        Me.TitleLabel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.TitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TitleLabel.Location = New System.Drawing.Point(3, 0)
+        Me.TitleLabel.Name = "TitleLabel"
+        Me.TitleLabel.Size = New System.Drawing.Size(534, 56)
+        Me.TitleLabel.TabIndex = 2
+        Me.TitleLabel.Text = "Slave Configuration"
+        Me.TitleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.Label1.Location = New System.Drawing.Point(3, 56)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(534, 38)
+        Me.Label1.TabIndex = 3
+        Me.Label1.Text = "Change the slave configuration. Click Save to write to the Slave."
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        '
+        'I2CAddressGroupBox
+        '
+        Me.I2CAddressGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.I2CAddressGroupBox.Controls.Add(Me.I2CAddressTextBox)
+        Me.I2CAddressGroupBox.Location = New System.Drawing.Point(3, 103)
+        Me.I2CAddressGroupBox.Name = "I2CAddressGroupBox"
+        Me.I2CAddressGroupBox.Size = New System.Drawing.Size(540, 49)
+        Me.I2CAddressGroupBox.TabIndex = 2
+        Me.I2CAddressGroupBox.TabStop = False
+        Me.I2CAddressGroupBox.Text = "I2C Address"
+        '
+        'I2CAddressTextBox
+        '
+        Me.I2CAddressTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.I2CAddressTextBox.Location = New System.Drawing.Point(10, 19)
+        Me.I2CAddressTextBox.Name = "I2CAddressTextBox"
+        Me.I2CAddressTextBox.Size = New System.Drawing.Size(524, 20)
+        Me.I2CAddressTextBox.TabIndex = 0
+        Me.I2CAddressTextBox.Text = "1"
         '
         'PlayerColorsGroupBox
         '
@@ -204,73 +380,6 @@ Partial Class SlaveConfigurationForm
         Me.PlayerOneColorPictureBox.TabIndex = 0
         Me.PlayerOneColorPictureBox.TabStop = False
         '
-        'TitleLayoutPanel
-        '
-        Me.TitleLayoutPanel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitleLayoutPanel.ColumnCount = 1
-        Me.TitleLayoutPanel.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TitleLayoutPanel.Controls.Add(Me.TitleLabel, 0, 0)
-        Me.TitleLayoutPanel.Controls.Add(Me.Label1, 0, 1)
-        Me.TitleLayoutPanel.Location = New System.Drawing.Point(3, 3)
-        Me.TitleLayoutPanel.Name = "TitleLayoutPanel"
-        Me.TitleLayoutPanel.RowCount = 2
-        Me.TitleLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.0!))
-        Me.TitleLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.0!))
-        Me.TitleLayoutPanel.Size = New System.Drawing.Size(540, 94)
-        Me.TitleLayoutPanel.TabIndex = 5
-        '
-        'TitleLabel
-        '
-        Me.TitleLabel.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.TitleLabel.Font = New System.Drawing.Font("Microsoft Sans Serif", 24.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TitleLabel.Location = New System.Drawing.Point(3, 0)
-        Me.TitleLabel.Name = "TitleLabel"
-        Me.TitleLabel.Size = New System.Drawing.Size(534, 56)
-        Me.TitleLabel.TabIndex = 2
-        Me.TitleLabel.Text = "Slave Configuration"
-        Me.TitleLabel.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        '
-        'Label1
-        '
-        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Label1.Location = New System.Drawing.Point(3, 56)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(534, 38)
-        Me.Label1.TabIndex = 3
-        Me.Label1.Text = "Change the slave configuration. Click Save to write to the Slave."
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.TopCenter
-        '
-        'I2CAddressGroupBox
-        '
-        Me.I2CAddressGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.I2CAddressGroupBox.Controls.Add(Me.I2CAddressTextBox)
-        Me.I2CAddressGroupBox.Location = New System.Drawing.Point(3, 103)
-        Me.I2CAddressGroupBox.Name = "I2CAddressGroupBox"
-        Me.I2CAddressGroupBox.Size = New System.Drawing.Size(540, 49)
-        Me.I2CAddressGroupBox.TabIndex = 2
-        Me.I2CAddressGroupBox.TabStop = False
-        Me.I2CAddressGroupBox.Text = "I2C Address"
-        '
-        'I2CAddressTextBox
-        '
-        Me.I2CAddressTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.I2CAddressTextBox.Location = New System.Drawing.Point(10, 19)
-        Me.I2CAddressTextBox.Name = "I2CAddressTextBox"
-        Me.I2CAddressTextBox.Size = New System.Drawing.Size(524, 20)
-        Me.I2CAddressTextBox.TabIndex = 0
-        Me.I2CAddressTextBox.Text = "1"
-        '
         'SaveButton
         '
         Me.SaveButton.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -282,29 +391,6 @@ Partial Class SlaveConfigurationForm
         Me.SaveButton.TabIndex = 7
         Me.SaveButton.Text = "Save"
         Me.SaveButton.UseVisualStyleBackColor = True
-        '
-        'LEDNumberGroupBox
-        '
-        Me.LEDNumberGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LEDNumberGroupBox.Controls.Add(Me.LEDNumberTextBox)
-        Me.LEDNumberGroupBox.Location = New System.Drawing.Point(3, 158)
-        Me.LEDNumberGroupBox.Name = "LEDNumberGroupBox"
-        Me.LEDNumberGroupBox.Size = New System.Drawing.Size(540, 49)
-        Me.LEDNumberGroupBox.TabIndex = 8
-        Me.LEDNumberGroupBox.TabStop = False
-        Me.LEDNumberGroupBox.Text = "Number of LEDs"
-        '
-        'LEDNumberTextBox
-        '
-        Me.LEDNumberTextBox.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.LEDNumberTextBox.Location = New System.Drawing.Point(10, 19)
-        Me.LEDNumberTextBox.Name = "LEDNumberTextBox"
-        Me.LEDNumberTextBox.Size = New System.Drawing.Size(524, 20)
-        Me.LEDNumberTextBox.TabIndex = 0
-        Me.LEDNumberTextBox.Text = "1"
         '
         'ServoLayoutPanel
         '
@@ -321,52 +407,6 @@ Partial Class SlaveConfigurationForm
         Me.ServoLayoutPanel.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.ServoLayoutPanel.Size = New System.Drawing.Size(540, 49)
         Me.ServoLayoutPanel.TabIndex = 9
-        '
-        'Servo1ENGroupBox
-        '
-        Me.Servo1ENGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo1ENGroupBox.Controls.Add(Me.Servo1ENTrackBar)
-        Me.Servo1ENGroupBox.Location = New System.Drawing.Point(3, 3)
-        Me.Servo1ENGroupBox.Name = "Servo1ENGroupBox"
-        Me.Servo1ENGroupBox.Size = New System.Drawing.Size(174, 43)
-        Me.Servo1ENGroupBox.TabIndex = 9
-        Me.Servo1ENGroupBox.TabStop = False
-        Me.Servo1ENGroupBox.Text = "Servo1 - Enabled"
-        '
-        'Servo1ENTrackBar
-        '
-        Me.Servo1ENTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo1ENTrackBar.Location = New System.Drawing.Point(7, 18)
-        Me.Servo1ENTrackBar.Maximum = 1000
-        Me.Servo1ENTrackBar.Name = "Servo1ENTrackBar"
-        Me.Servo1ENTrackBar.Size = New System.Drawing.Size(161, 25)
-        Me.Servo1ENTrackBar.TabIndex = 0
-        '
-        'Servo2ENGroupBox
-        '
-        Me.Servo2ENGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo2ENGroupBox.Controls.Add(Me.Servo2ENTrackBar)
-        Me.Servo2ENGroupBox.Location = New System.Drawing.Point(183, 3)
-        Me.Servo2ENGroupBox.Name = "Servo2ENGroupBox"
-        Me.Servo2ENGroupBox.Size = New System.Drawing.Size(174, 43)
-        Me.Servo2ENGroupBox.TabIndex = 10
-        Me.Servo2ENGroupBox.TabStop = False
-        Me.Servo2ENGroupBox.Text = "Servo2 - Enabled"
-        '
-        'Servo2ENTrackBar
-        '
-        Me.Servo2ENTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo2ENTrackBar.Location = New System.Drawing.Point(7, 18)
-        Me.Servo2ENTrackBar.Maximum = 1000
-        Me.Servo2ENTrackBar.Name = "Servo2ENTrackBar"
-        Me.Servo2ENTrackBar.Size = New System.Drawing.Size(161, 25)
-        Me.Servo2ENTrackBar.TabIndex = 0
         '
         'Servo3ENGroupBox
         '
@@ -388,93 +428,54 @@ Partial Class SlaveConfigurationForm
         Me.Servo3ENTrackBar.Location = New System.Drawing.Point(7, 18)
         Me.Servo3ENTrackBar.Maximum = 1000
         Me.Servo3ENTrackBar.Name = "Servo3ENTrackBar"
-        Me.Servo3ENTrackBar.Size = New System.Drawing.Size(161, 25)
+        Me.Servo3ENTrackBar.Size = New System.Drawing.Size(161, 45)
         Me.Servo3ENTrackBar.TabIndex = 0
         '
-        'TableLayoutPanel1
+        'Servo2ENGroupBox
         '
-        Me.TableLayoutPanel1.ColumnCount = 3
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel1.Controls.Add(Me.Servo3DISGroupBox, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Servo2DISGroupBox, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Servo1DISGroupBox, 0, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(3, 349)
-        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 1
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(540, 49)
-        Me.TableLayoutPanel1.TabIndex = 10
-        '
-        'Servo3DISGroupBox
-        '
-        Me.Servo3DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Servo2ENGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo3DISGroupBox.Controls.Add(Me.Servo3DISTrackBar)
-        Me.Servo3DISGroupBox.Location = New System.Drawing.Point(363, 3)
-        Me.Servo3DISGroupBox.Name = "Servo3DISGroupBox"
-        Me.Servo3DISGroupBox.Size = New System.Drawing.Size(174, 43)
-        Me.Servo3DISGroupBox.TabIndex = 11
-        Me.Servo3DISGroupBox.TabStop = False
-        Me.Servo3DISGroupBox.Text = "Servo3 - Disabled"
+        Me.Servo2ENGroupBox.Controls.Add(Me.Servo2ENTrackBar)
+        Me.Servo2ENGroupBox.Location = New System.Drawing.Point(183, 3)
+        Me.Servo2ENGroupBox.Name = "Servo2ENGroupBox"
+        Me.Servo2ENGroupBox.Size = New System.Drawing.Size(174, 43)
+        Me.Servo2ENGroupBox.TabIndex = 10
+        Me.Servo2ENGroupBox.TabStop = False
+        Me.Servo2ENGroupBox.Text = "Servo2 - Enabled"
         '
-        'Servo3DISTrackBar
+        'Servo2ENTrackBar
         '
-        Me.Servo3DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.Servo2ENTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo3DISTrackBar.Location = New System.Drawing.Point(7, 18)
-        Me.Servo3DISTrackBar.Maximum = 1000
-        Me.Servo3DISTrackBar.Name = "Servo3DISTrackBar"
-        Me.Servo3DISTrackBar.Size = New System.Drawing.Size(161, 25)
-        Me.Servo3DISTrackBar.TabIndex = 0
+        Me.Servo2ENTrackBar.Location = New System.Drawing.Point(7, 18)
+        Me.Servo2ENTrackBar.Maximum = 1000
+        Me.Servo2ENTrackBar.Name = "Servo2ENTrackBar"
+        Me.Servo2ENTrackBar.Size = New System.Drawing.Size(161, 45)
+        Me.Servo2ENTrackBar.TabIndex = 0
         '
-        'Servo2DISGroupBox
+        'Servo1ENGroupBox
         '
-        Me.Servo2DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+        Me.Servo1ENGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo2DISGroupBox.Controls.Add(Me.Servo2DISTrackBar)
-        Me.Servo2DISGroupBox.Location = New System.Drawing.Point(183, 3)
-        Me.Servo2DISGroupBox.Name = "Servo2DISGroupBox"
-        Me.Servo2DISGroupBox.Size = New System.Drawing.Size(174, 43)
-        Me.Servo2DISGroupBox.TabIndex = 10
-        Me.Servo2DISGroupBox.TabStop = False
-        Me.Servo2DISGroupBox.Text = "Servo2 - Disabled"
+        Me.Servo1ENGroupBox.Controls.Add(Me.Servo1ENTrackBar)
+        Me.Servo1ENGroupBox.Location = New System.Drawing.Point(3, 3)
+        Me.Servo1ENGroupBox.Name = "Servo1ENGroupBox"
+        Me.Servo1ENGroupBox.Size = New System.Drawing.Size(174, 43)
+        Me.Servo1ENGroupBox.TabIndex = 9
+        Me.Servo1ENGroupBox.TabStop = False
+        Me.Servo1ENGroupBox.Text = "Servo1 - Enabled"
         '
-        'Servo2DISTrackBar
+        'Servo1ENTrackBar
         '
-        Me.Servo2DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.Servo1ENTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo2DISTrackBar.Location = New System.Drawing.Point(7, 18)
-        Me.Servo2DISTrackBar.Maximum = 1000
-        Me.Servo2DISTrackBar.Name = "Servo2DISTrackBar"
-        Me.Servo2DISTrackBar.Size = New System.Drawing.Size(161, 25)
-        Me.Servo2DISTrackBar.TabIndex = 0
-        '
-        'Servo1DISGroupBox
-        '
-        Me.Servo1DISGroupBox.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo1DISGroupBox.Controls.Add(Me.Servo1DISTrackBar)
-        Me.Servo1DISGroupBox.Location = New System.Drawing.Point(3, 3)
-        Me.Servo1DISGroupBox.Name = "Servo1DISGroupBox"
-        Me.Servo1DISGroupBox.Size = New System.Drawing.Size(174, 43)
-        Me.Servo1DISGroupBox.TabIndex = 9
-        Me.Servo1DISGroupBox.TabStop = False
-        Me.Servo1DISGroupBox.Text = "Servo1 - Disabled"
-        '
-        'Servo1DISTrackBar
-        '
-        Me.Servo1DISTrackBar.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Servo1DISTrackBar.Location = New System.Drawing.Point(7, 18)
-        Me.Servo1DISTrackBar.Maximum = 1000
-        Me.Servo1DISTrackBar.Name = "Servo1DISTrackBar"
-        Me.Servo1DISTrackBar.Size = New System.Drawing.Size(161, 25)
-        Me.Servo1DISTrackBar.TabIndex = 0
+        Me.Servo1ENTrackBar.Location = New System.Drawing.Point(7, 18)
+        Me.Servo1ENTrackBar.Maximum = 1000
+        Me.Servo1ENTrackBar.Name = "Servo1ENTrackBar"
+        Me.Servo1ENTrackBar.Size = New System.Drawing.Size(161, 45)
+        Me.Servo1ENTrackBar.TabIndex = 0
         '
         'SlaveConfigurationForm
         '
@@ -482,30 +483,11 @@ Partial Class SlaveConfigurationForm
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(570, 492)
         Me.Controls.Add(Me.FormLayoutPanel)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "SlaveConfigurationForm"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "SlaveConfigurationForm"
         Me.FormLayoutPanel.ResumeLayout(False)
-        Me.PlayerColorsGroupBox.ResumeLayout(False)
-        CType(Me.PlayerFourColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PlayerThreeColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PlayerTwoColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PlayerOneColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.TitleLayoutPanel.ResumeLayout(False)
-        Me.I2CAddressGroupBox.ResumeLayout(False)
-        Me.I2CAddressGroupBox.PerformLayout()
-        Me.LEDNumberGroupBox.ResumeLayout(False)
-        Me.LEDNumberGroupBox.PerformLayout()
-        Me.ServoLayoutPanel.ResumeLayout(False)
-        Me.Servo1ENGroupBox.ResumeLayout(False)
-        Me.Servo1ENGroupBox.PerformLayout()
-        CType(Me.Servo1ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Servo2ENGroupBox.ResumeLayout(False)
-        Me.Servo2ENGroupBox.PerformLayout()
-        CType(Me.Servo2ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Servo3ENGroupBox.ResumeLayout(False)
-        Me.Servo3ENGroupBox.PerformLayout()
-        CType(Me.Servo3ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.Servo3DISGroupBox.ResumeLayout(False)
         Me.Servo3DISGroupBox.PerformLayout()
@@ -516,6 +498,26 @@ Partial Class SlaveConfigurationForm
         Me.Servo1DISGroupBox.ResumeLayout(False)
         Me.Servo1DISGroupBox.PerformLayout()
         CType(Me.Servo1DISTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.LEDNumberGroupBox.ResumeLayout(False)
+        Me.LEDNumberGroupBox.PerformLayout()
+        Me.TitleLayoutPanel.ResumeLayout(False)
+        Me.I2CAddressGroupBox.ResumeLayout(False)
+        Me.I2CAddressGroupBox.PerformLayout()
+        Me.PlayerColorsGroupBox.ResumeLayout(False)
+        CType(Me.PlayerFourColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayerThreeColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayerTwoColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PlayerOneColorPictureBox, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ServoLayoutPanel.ResumeLayout(False)
+        Me.Servo3ENGroupBox.ResumeLayout(False)
+        Me.Servo3ENGroupBox.PerformLayout()
+        CType(Me.Servo3ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Servo2ENGroupBox.ResumeLayout(False)
+        Me.Servo2ENGroupBox.PerformLayout()
+        CType(Me.Servo2ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Servo1ENGroupBox.ResumeLayout(False)
+        Me.Servo1ENGroupBox.PerformLayout()
+        CType(Me.Servo1ENTrackBar, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -33,9 +33,10 @@ Partial Class AboutForm
         Me.AboutLabel.AutoSize = True
         Me.AboutLabel.Location = New System.Drawing.Point(0, 0)
         Me.AboutLabel.Name = "AboutLabel"
-        Me.AboutLabel.Size = New System.Drawing.Size(168, 39)
+        Me.AboutLabel.Size = New System.Drawing.Size(301, 39)
         Me.AboutLabel.TabIndex = 0
-        Me.AboutLabel.Text = "Laser Arcade Project" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Alex Wheelock and Andrew Keller" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Spring 2025" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.AboutLabel.Text = "Laser Arcade Project" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Andrew Keller, Rudy Earnest, Angel Nava, and Alexis Villagr" &
+    "an" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Fall 2025" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
         '
         'OkButton
         '
@@ -52,10 +53,10 @@ Partial Class AboutForm
         Me.GithubLinkLabel.AutoSize = True
         Me.GithubLinkLabel.Location = New System.Drawing.Point(0, 52)
         Me.GithubLinkLabel.Name = "GithubLinkLabel"
-        Me.GithubLinkLabel.Size = New System.Drawing.Size(287, 13)
+        Me.GithubLinkLabel.Size = New System.Drawing.Size(285, 13)
         Me.GithubLinkLabel.TabIndex = 1
         Me.GithubLinkLabel.TabStop = True
-        Me.GithubLinkLabel.Text = "https://github.com/AlexWheelock/Laser-Arcade-Project.git"
+        Me.GithubLinkLabel.Text = "https://github.com/andrew1593571/RCETLaserArcade.git"
         '
         'AboutForm
         '

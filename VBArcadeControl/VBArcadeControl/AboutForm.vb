@@ -3,8 +3,8 @@ Option Explicit On
 
 'Laser Arcade Project
 'Andrew Keller
-'Spring 2025
-'https://github.com/AlexWheelock/Laser-Arcade-Project.git
+'Fall 2025
+'https://github.com/andrew1593571/RCETLaserArcade.git
 
 Public Class AboutForm
     Private Sub OkButton_Click(sender As Object, e As EventArgs) Handles OkButton.Click
@@ -12,7 +12,7 @@ Public Class AboutForm
     End Sub
 
     Private Sub GithubLinkLabel_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles GithubLinkLabel.LinkClicked
-        Dim githubAddress As String = "https://github.com/AlexWheelock/Laser-Arcade-Project.git"
+        Dim githubAddress As String = "https://github.com/andrew1593571/RCETLaserArcade.git"
 
         Process.Start(githubAddress)
     End Sub

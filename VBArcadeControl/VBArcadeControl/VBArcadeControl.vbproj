@@ -130,8 +130,30 @@
       <DependentUpon>ArcadeControlForm.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BlasterConfigurationForm.Designer.vb">
+      <DependentUpon>BlasterConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="BlasterConfigurationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Classes\ArcadeTarget.vb" />
+    <Compile Include="Classes\Player.vb" />
+    <Compile Include="Classes\PlayerColors.vb" />
+    <Compile Include="Classes\UARTController.vb" />
     <Compile Include="Classes\LaserArcade.vb" />
+    <Compile Include="SlaveConfigurationForm.Designer.vb">
+      <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SlaveConfigurationForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StartupForm.Designer.vb">
+      <DependentUpon>StartupForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="StartupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UARTTestModule.vb" />
     <Compile Include="LightningGameForm.Designer.vb">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
     </Compile>
@@ -154,7 +176,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Player.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AboutForm.resx">
@@ -166,6 +187,9 @@
     <EmbeddedResource Include="ArcadeControlForm.resx">
       <DependentUpon>ArcadeControlForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BlasterConfigurationForm.resx">
+      <DependentUpon>BlasterConfigurationForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LightningGameForm.resx">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -174,6 +198,12 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SlaveConfigurationForm.resx">
+      <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StartupForm.resx">
+      <DependentUpon>StartupForm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bengal.ico" />
+    <None Include="Resources\Bengal.png" />
     <None Include="Resources\UIPlayer1.png" />
     <None Include="Resources\UIPlayer2.png" />
     <None Include="Resources\UIPlayer3.png" />

@@ -120,7 +120,7 @@
 		(pos 109 6.9)
 		(comment "Paper format name")
 	)
-	(tbtext "Id: ${#}/${##}"
+	(tbtext "Id: ${#}"
 		(name "")
 		(pos 24 4.1)
 		(comment "Sheet id")

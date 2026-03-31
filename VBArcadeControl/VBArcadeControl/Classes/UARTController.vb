@@ -343,6 +343,43 @@ Public Class UARTController
     End Sub
 
 
+    '====MASTER: $W addr E====
+
+    Public Sub SendI2CEnable(addr As Byte)
+        If addr > 127 Then
+            RaiseEvent InvalidI2CAddress(addr)
+            Exit Sub
+        End If
+
+        'If Not EnsureCanSend(UartCommand.I2CRead) Then Exit Sub
+
+        'Packet: "$W" + addr + "A"
+        SendPacket(
+            Asc("$"c),
+            Asc("W"c),
+            addr,
+            Asc("E"c))
+    End Sub
+
+
+
+    '====MASTER: $W addr D====
+
+    Public Sub SendI2CDisable(addr As Byte)
+        If addr > 127 Then
+            RaiseEvent InvalidI2CAddress(addr)
+            Exit Sub
+        End If
+
+        'Packet: "$W" + addr + "D"
+        SendPacket(
+            Asc("$"c),
+            Asc("W"c),
+            addr,
+            Asc("D"c))
+    End Sub
+
+
     '====SLAVE/BLASTER: $S====
     'Only used for trouble shooting, not normally used in operation
     'Only in the calibration menu

@@ -32,13 +32,16 @@
             Select Case SelectedDevice.DeviceType
                 Case UARTController.ConnectedDeviceType.Master
                     If MsgBox($"Successfully connected to the Laser Arcade Master at {COMPortComboBox.Text}.{vbNewLine}Would you like to pick a game?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                        Dim GamePickerForm As New GamePicker(SelectedDevice)
 
-                        MsgBox("GOTO Game Picker")
+                        GamePickerForm.Show()
+                        Me.Hide()
                     End If
                 Case UARTController.ConnectedDeviceType.Slave
                     If MsgBox($"Successfully connected to the Laser Arcade Slave at {COMPortComboBox.Text}.{vbNewLine}Would you like to configure the slave?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                         Dim SlaveConfigForm As New SlaveConfigurationForm(SelectedDevice)
                         SlaveConfigForm.Show()
+
                         Me.Hide()
                     End If
                 Case UARTController.ConnectedDeviceType.Blaster

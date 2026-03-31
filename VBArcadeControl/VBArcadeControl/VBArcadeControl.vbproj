@@ -141,6 +141,12 @@
     <Compile Include="Classes\PlayerColors.vb" />
     <Compile Include="Classes\UARTController.vb" />
     <Compile Include="Classes\LaserArcade.vb" />
+    <Compile Include="GamePicker.Designer.vb">
+      <DependentUpon>GamePicker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GamePicker.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SlaveConfigurationForm.Designer.vb">
       <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
     </Compile>
@@ -151,6 +157,12 @@
       <DependentUpon>StartupForm.vb</DependentUpon>
     </Compile>
     <Compile Include="StartupForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TestTargetStatus.Designer.vb">
+      <DependentUpon>TestTargetStatus.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestTargetStatus.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UARTTestModule.vb" />
@@ -190,6 +202,9 @@
     <EmbeddedResource Include="BlasterConfigurationForm.resx">
       <DependentUpon>BlasterConfigurationForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GamePicker.resx">
+      <DependentUpon>GamePicker.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LightningGameForm.resx">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StartupForm.resx">
       <DependentUpon>StartupForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestTargetStatus.resx">
+      <DependentUpon>TestTargetStatus.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

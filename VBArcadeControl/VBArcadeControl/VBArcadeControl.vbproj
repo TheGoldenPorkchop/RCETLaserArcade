@@ -165,6 +165,12 @@
     <Compile Include="TestTargetStatus.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="TicTacToeGame.Designer.vb">
+      <DependentUpon>TicTacToeGame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TicTacToeGame.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UARTTestModule.vb" />
     <Compile Include="LightningGameForm.Designer.vb">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
@@ -223,6 +229,9 @@
     <EmbeddedResource Include="TestTargetStatus.resx">
       <DependentUpon>TestTargetStatus.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TicTacToeGame.resx">
+      <DependentUpon>TicTacToeGame.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="My Project\app.manifest" />
@@ -255,6 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bengal.ico" />
+    <None Include="Resources\PIcon.png" />
+    <None Include="Resources\BIcon.png" />
+    <None Include="Resources\NoIcon.png" />
     <None Include="Resources\Bengal.png" />
     <None Include="Resources\UIPlayer1.png" />
     <None Include="Resources\UIPlayer2.png" />

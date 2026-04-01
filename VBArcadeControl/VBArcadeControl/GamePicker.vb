@@ -17,7 +17,10 @@
 
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
+    Private Sub TicTacToeButton_Click(sender As Object, e As EventArgs) Handles TicTacToeButton.Click
+        'Dim ticTacToeTargetForm As New TicTacToeGame(gameCOM)
+        'ticTacToeTargetForm.Show()
+        TicTacToeGame.Show()
+        Me.Hide()
     End Sub
 End Class

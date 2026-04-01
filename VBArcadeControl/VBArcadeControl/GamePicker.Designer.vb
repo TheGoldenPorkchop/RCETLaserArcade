@@ -22,38 +22,38 @@ Partial Class GamePicker
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.LightningButton = New System.Windows.Forms.Button()
+        Me.MemoryButton = New System.Windows.Forms.Button()
+        Me.TicTacToeButton = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'LightningButton
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 12)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(102, 51)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Lightning"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.LightningButton.Location = New System.Drawing.Point(12, 12)
+        Me.LightningButton.Name = "LightningButton"
+        Me.LightningButton.Size = New System.Drawing.Size(102, 51)
+        Me.LightningButton.TabIndex = 0
+        Me.LightningButton.Text = "Lightning"
+        Me.LightningButton.UseVisualStyleBackColor = True
         '
-        'Button2
+        'MemoryButton
         '
-        Me.Button2.Location = New System.Drawing.Point(120, 12)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(102, 51)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Memory"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.MemoryButton.Location = New System.Drawing.Point(120, 12)
+        Me.MemoryButton.Name = "MemoryButton"
+        Me.MemoryButton.Size = New System.Drawing.Size(102, 51)
+        Me.MemoryButton.TabIndex = 1
+        Me.MemoryButton.Text = "Memory"
+        Me.MemoryButton.UseVisualStyleBackColor = True
         '
-        'Button3
+        'TicTacToeButton
         '
-        Me.Button3.Location = New System.Drawing.Point(228, 12)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(102, 51)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "TicTacToe"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.TicTacToeButton.Location = New System.Drawing.Point(228, 12)
+        Me.TicTacToeButton.Name = "TicTacToeButton"
+        Me.TicTacToeButton.Size = New System.Drawing.Size(102, 51)
+        Me.TicTacToeButton.TabIndex = 2
+        Me.TicTacToeButton.Text = "TicTacToe"
+        Me.TicTacToeButton.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -70,17 +70,17 @@ Partial Class GamePicker
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TicTacToeButton)
+        Me.Controls.Add(Me.MemoryButton)
+        Me.Controls.Add(Me.LightningButton)
         Me.Name = "GamePicker"
         Me.Text = "GamePicker"
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents LightningButton As Button
+    Friend WithEvents MemoryButton As Button
+    Friend WithEvents TicTacToeButton As Button
     Friend WithEvents Button4 As Button
 End Class

@@ -62,6 +62,35 @@ Public Class UARTController
     'Invalid-command & invalid-address events
     Public Event UnsupportedCommand(commandName As String, device As ConnectedDeviceType)
     Public Event InvalidI2CAddress(address As Byte)
+
+    '===============================
+    ' DATA PARSING FIELDS
+    '===============================
+
+    'Remembers which slave address we most recently polled
+    'Since we poll one slave at a time, this is enough to pair a response to an address
+    Private _lastPolledAddress As Byte = 0
+
+    'Receive buffer – accumulates incoming bytes until we have a full 3-byte packet
+    Private _receiveBuffer(2) As Byte
+    Private _receiveIndex As Integer = 0
+
+    'Parse events
+    Public Event ParseFailed(reason As String)
+    Public Event TargetHit(address As Byte, player As Byte)
+    Public Event CommandAcknowledged(address As Byte)
+
+    '===============================
+    ' TargetHitData Structure
+    '===============================
+    'Simple container pairing a slave address with the player number that hit it.
+    'Raised alongside the TargetHit event for any listener that wants a single object.
+    Public Structure TargetHitData
+        Dim Address As Byte   '1–25  (slave grid position)
+        Dim Player As Byte    '1–4   (which player fired)
+    End Structure
+
+
 #End Region
 
 #Region "==============CONSTRUCTOR==============="
@@ -78,6 +107,10 @@ Public Class UARTController
         Me.serialPortJimmy.DataBits = 8
         Me.serialPortJimmy.Parity = IO.Ports.Parity.None
         Me.serialPortJimmy.StopBits = IO.Ports.StopBits.One
+
+        'Wire up the DataReceived handler so incoming bytes are processed automatically
+        AddHandler serialPortJimmy.DataReceived, AddressOf OnDataReceived
+
     End Sub
 #End Region
 
@@ -335,6 +368,13 @@ Public Class UARTController
 
         If Not EnsureCanSend(UartCommand.I2CRead) Then Exit Sub
 
+
+        'Remember which slave we are polling
+        _lastPolledAddress = addr
+
+        'Reset the receive buffer so we start fresh for this response
+        _receiveIndex = 0
+
         'Packet: "$R" + addr
         SendPacket(
             Asc("$"c),
@@ -370,6 +410,12 @@ Public Class UARTController
             RaiseEvent InvalidI2CAddress(addr)
             Exit Sub
         End If
+
+        'Remember which slave we are talking to
+        _lastPolledAddress = addr
+
+        'Reset the receive buffer
+        _receiveIndex = 0
 
         'Packet: "$W" + addr + "D"
         SendPacket(
@@ -456,17 +502,105 @@ Public Class UARTController
 #End Region
 
 #Region "==============DATA PARSING==============="
-    'TO DO LIST:
-    'New obj needs to be created to serve as a container for the settings
-    'We dont need to interpret the data but will need to have a check, $ !, !
-    'If the byte does not start and end with that, lets assume parse failed
-    'Create new event for failed parse event
-    'update read settings?
+    'TO DO LIST PART 2 4/1/26:
+    'Create DataReceived event handler that will read incoming bytes and raise events with the data
 
-    '=====================
-    'BlasterSettings Class
 
-    'This will serve as a data container for the Blaster ReadSettings:
+    '===============================
+    ' DataReceived Handler
+    '===============================
+    'This fires automatically on a background thread whenever the serial port
+    'receives one or more bytes. We read all available bytes and feed them into
+    'the receive buffer one at a time.
+    '
+    'NOTE: Because this runs on a background thread, any UI updates in the
+    'form that handles TargetHit or ParseFailed MUST use Me.Invoke() to
+    'marshal back onto the UI thread.
+
+    Private Sub OnDataReceived(sender As Object, e As IO.Ports.SerialDataReceivedEventArgs)
+        Try
+            'Read however many bytes are waiting right now
+            Dim bytesAvailable As Integer = serialPortJimmy.BytesToRead
+
+            For i As Integer = 1 To bytesAvailable
+                Dim b As Byte = CByte(serialPortJimmy.ReadByte())
+                BufferByte(b)
+            Next
+
+        Catch ex As Exception
+            'If something goes wrong reading, raise a ParseFailed event
+            RaiseEvent ParseFailed("DataReceived read error: " & ex.Message)
+        End Try
+    End Sub
+
+    '===============================
+    ' BufferByte
+    '===============================
+    'Feeds one byte at a time into the 3-byte receive buffer.
+    'When the buffer is full, hands off to ParsePacket and resets.
+    '
+    'If the very first byte is not "$" we discard it immediately and
+    'raise ParseFailed – this keeps the buffer from filling with garbage.
+
+    Private Sub BufferByte(b As Byte)
+        If _receiveIndex = 0 AndAlso b <> Asc("$"c) Then
+            RaiseEvent ParseFailed(
+            "Invalid header byte: 0x" & b.ToString("X2") & " (expected '$')")
+            Return
+        End If
+
+        _receiveBuffer(_receiveIndex) = b
+        _receiveIndex += 1
+
+        ' 2-byte packet: "$ A" = Acknowledgment, complete after 2 bytes
+        If _receiveIndex = 2 AndAlso _receiveBuffer(1) = Asc("A"c) Then
+            RaiseEvent CommandAcknowledged(_lastPolledAddress)
+            _receiveIndex = 0
+            Return
+        End If
+
+        ' 3-byte packet: "$ R PLAYER#" = Target hit response
+        If _receiveIndex = 3 Then
+            ParsePacket()
+            _receiveIndex = 0
+        End If
+    End Sub
+
+    '===============================
+    ' ParsePacket
+    '===============================
+    'Validates the 3-byte packet sitting in _receiveBuffer:
+    '   Byte 0 : "$"      (already guaranteed by BufferByte)
+    '   Byte 1 : "R"
+    '   Byte 2 : PLAYER#  (1–4)
+    '
+    'On success → raises TargetHit(address, player)
+    'On failure → raises ParseFailed(reason)
+
+    Private Sub ParsePacket()
+        Dim byte0 As Byte = _receiveBuffer(0)  ' "$"
+        Dim byte1 As Byte = _receiveBuffer(1)  ' "R"
+        Dim byte2 As Byte = _receiveBuffer(2)  ' PLAYER#
+
+        'Byte 1 must be "R"
+        If byte1 <> Asc("R"c) Then
+            RaiseEvent ParseFailed(
+                "Invalid command byte: 0x" & byte1.ToString("X2") & " (expected 'R')")
+            Return
+        End If
+
+        'Byte 2 must be a player number 1–4
+        If byte2 < 1 OrElse byte2 > 4 Then
+            RaiseEvent ParseFailed(
+                "Player number out of range: " & byte2.ToString() & " (expected 1–4)")
+            Return
+        End If
+
+        'Packet is valid – raise TargetHit with the remembered address and the player number
+        RaiseEvent TargetHit(_lastPolledAddress, byte2)
+    End Sub
+
+
 
 #End Region
 End Class

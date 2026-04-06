@@ -1,13 +1,84 @@
 ﻿Public Class TicTacToeGame
-    'Private WithEvents ticTacToeCOM As UARTController
-    'Public Sub New(ticTacToeTarget As UARTController)
-    ' This call is required by the designer.
-    'InitializeComponent()
-    ' Add any initialization after the InitializeComponent() call.
-    'ticTacToeCOM = ticTacToeTarget
-    'End Sub
+    Private WithEvents ticTacToeCOM As UARTController
+    Public Sub New(ticTacToeTarget As UARTController)
+        ' This call is required by the designer.
+        InitializeComponent()
+        ' Add any initialization after the InitializeComponent() call.
+        ticTacToeCOM = ticTacToeTarget
+    End Sub
 
     Dim TicTacToeTargets(9) As Byte
+
+    Private Sub ticTacToeCOM_TargetHit(address As Byte, player As Byte) Handles ticTacToeCOM.TargetHit
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() ReadTicTacToeTarget(address, player))
+        Else
+            ReadTicTacToeTarget(address, player)
+        End If
+    End Sub
+
+    Private Sub ticTacToeCOM_ParseFailed(reason As String) Handles ticTacToeCOM.ParseFailed
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() UpdateParseFailedUI(reason))
+        Else
+            UpdateParseFailedUI(reason)
+        End If
+    End Sub
+    Private Sub UpdateParseFailedUI(reason As String)
+        'ResultLabel.Text = "Parse Failed: " & reason
+    End Sub
+    Private Sub ticTacToeCOM_CommandAcknowledged(address As Byte) Handles ticTacToeCOM.CommandAcknowledged
+        If Me.InvokeRequired Then
+            'Me.Invoke(Sub() ResultLabel.Text = "Command acknowledged by target " & (address \ 2).ToString())
+        Else
+            'ResultLabel.Text = "Command acknowledged by target " & address.ToString()
+        End If
+    End Sub
+
+    Sub ReadTicTacToeTarget(address As Byte, player As Byte)
+        Dim validPlayerTurn As Integer
+        Dim preCount As Integer
+        Dim postCount As Integer
+
+        If PlayerTurnTextBox.Text = "1" Then
+            validPlayerTurn = 1
+        Else
+            validPlayerTurn = 2
+        End If
+
+        If player = validPlayerTurn Then
+            TicTacToeTargets(address \ 2) = CInt(PlayerTurnTextBox.Text)
+
+            Select Case address \ 2
+                Case 1
+                    PictureBox1.Image = TurnPictureBox.Image
+                Case 2
+                    PictureBox2.Image = TurnPictureBox.Image
+                Case 3
+                    PictureBox3.Image = TurnPictureBox.Image
+                Case 4
+                    PictureBox4.Image = TurnPictureBox.Image
+                Case 5
+                    PictureBox5.Image = TurnPictureBox.Image
+                Case 6
+                    PictureBox6.Image = TurnPictureBox.Image
+                Case 7
+                    PictureBox7.Image = TurnPictureBox.Image
+                Case 8
+                    PictureBox8.Image = TurnPictureBox.Image
+                Case 9
+                    PictureBox9.Image = TurnPictureBox.Image
+            End Select
+
+            preCount = CInt(TurnsPassedTextBox.Text)
+            postCount = Counter(preCount)
+            TurnsPassedTextBox.Text = postCount
+            WinCheck()
+        Else
+            'xxx
+        End If
+        'MsgBox("We hit the blaster")
+    End Sub
 
     Sub Reset()
         PictureBox1.Image = My.Resources.NoIcon
@@ -71,6 +142,12 @@
 
 
     Sub WinCheck()
+        'blaster testing (delete soon)
+        If TicTacToeTargets(1) = 1 And TicTacToeTargets(2) = 1 Then
+            WinnerPictureBox.Image = My.Resources.BIcon
+            MsgBox("P1 Wins")
+            EndGame()
+        End If
         'Player 1
         If TicTacToeTargets(1) = 1 And TicTacToeTargets(2) = 1 And TicTacToeTargets(3) = 1 Then
             WinnerPictureBox.Image = My.Resources.BIcon
@@ -178,14 +255,14 @@
         ResetButton.Enabled = False
 
         TicTacToeTargets(0) = 1
+        Timer1.Stop()
     End Sub
 
-    Sub ReadTicTacToeTargets()
-
-    End Sub
     '--------------------------------------------------------------
     'Event Handlers
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
+        ticTacToeCOM.SendI2CEnable(0)
+        Timer1.Start()
         Reset()
         PictureBox1.Enabled = True
         PictureBox2.Enabled = True
@@ -211,12 +288,14 @@
         Dim preCount As Integer
         Dim postCount As Integer
 
-        TicTacToeTargets(1) = CInt(PlayerTurnTextBox.Text)
-        PictureBox1.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        'TicTacToeTargets(1) = CInt(PlayerTurnTextBox.Text)
+        'PictureBox1.Image = TurnPictureBox.Image
+        'preCount = CInt(TurnsPassedTextBox.Text)
+        'postCount = Counter(preCount)
+        'TurnsPassedTextBox.Text = postCount
+        'WinCheck()
+        ticTacToeCOM.SendI2CRead(2)
+
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
@@ -317,6 +396,50 @@
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ResetButton.Click
         'WinCheck()
+        Timer1.Stop()
+        ticTacToeCOM.SendI2CDisable(0)
         Reset()
+    End Sub
+
+    Dim timercounts As Integer = 0
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        timercounts = timercounts + 1
+
+        'If TimerTestRadioButton.Checked = True Then
+        'TimerTestRadioButton.Checked = False
+        'Else
+        'TimerTestRadioButton.Checked = True
+        'End If
+
+        Select Case timercounts
+            Case 1
+                ticTacToeCOM.SendI2CRead(2)
+                TimerTestRadioButton.Checked = False
+            Case 2
+                ticTacToeCOM.SendI2CRead(4)
+                TimerTestRadioButton.Checked = True
+            Case 3
+                ticTacToeCOM.SendI2CRead(6)
+                TimerTestRadioButton.Checked = False
+            Case 4
+                ticTacToeCOM.SendI2CRead(8)
+                TimerTestRadioButton.Checked = True
+            Case 5
+                ticTacToeCOM.SendI2CRead(10)
+                TimerTestRadioButton.Checked = False
+            Case 6
+                ticTacToeCOM.SendI2CRead(12)
+                TimerTestRadioButton.Checked = True
+            Case 7
+                ticTacToeCOM.SendI2CRead(14)
+                TimerTestRadioButton.Checked = False
+            Case 8
+                ticTacToeCOM.SendI2CRead(16)
+                TimerTestRadioButton.Checked = True
+            Case 9
+                ticTacToeCOM.SendI2CRead(18)
+                TimerTestRadioButton.Checked = False
+                timercounts = 0
+        End Select
     End Sub
 End Class

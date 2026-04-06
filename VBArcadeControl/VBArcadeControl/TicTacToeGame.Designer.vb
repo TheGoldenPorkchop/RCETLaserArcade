@@ -22,6 +22,7 @@ Partial Class TicTacToeGame
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.StartButton = New System.Windows.Forms.Button()
         Me.ResetButton = New System.Windows.Forms.Button()
         Me.ReturnButton = New System.Windows.Forms.Button()
@@ -41,6 +42,8 @@ Partial Class TicTacToeGame
         Me.Label2 = New System.Windows.Forms.Label()
         Me.WinnerPictureBox = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.TimerTestRadioButton = New System.Windows.Forms.RadioButton()
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -255,11 +258,27 @@ Partial Class TicTacToeGame
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Winner:"
         '
+        'Timer1
+        '
+        Me.Timer1.Interval = 250
+        '
+        'TimerTestRadioButton
+        '
+        Me.TimerTestRadioButton.AutoSize = True
+        Me.TimerTestRadioButton.Location = New System.Drawing.Point(174, 412)
+        Me.TimerTestRadioButton.Name = "TimerTestRadioButton"
+        Me.TimerTestRadioButton.Size = New System.Drawing.Size(93, 20)
+        Me.TimerTestRadioButton.TabIndex = 19
+        Me.TimerTestRadioButton.TabStop = True
+        Me.TimerTestRadioButton.Text = "Timer Test"
+        Me.TimerTestRadioButton.UseVisualStyleBackColor = True
+        '
         'TicTacToeGame
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.TimerTestRadioButton)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.WinnerPictureBox)
         Me.Controls.Add(Me.Label2)
@@ -316,4 +335,6 @@ Partial Class TicTacToeGame
     Friend WithEvents Label2 As Label
     Friend WithEvents WinnerPictureBox As PictureBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents TimerTestRadioButton As RadioButton
 End Class

@@ -92,4 +92,42 @@ Public Class TestTargetStatus
         writableAddress = CInt(AddressTextBox.Text) * 2
         testCOM.SendI2CDisable(CByte(writableAddress))
     End Sub
+
+
+
+    ' Handles the TargetHit event raised by UARTController
+    ' This fires on a background thread, so we MUST use Me.Invoke()
+    Private Sub testCOM_TargetHit(address As Byte, player As Byte) Handles testCOM.TargetHit
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() UpdateTargetHitUI(address, player))
+        Else
+            UpdateTargetHitUI(address, player)
+        End If
+    End Sub
+
+    ' Safe to touch UI controls here — always runs on the UI thread+
+    Private Sub UpdateTargetHitUI(address As Byte, player As Byte)
+        ResultLabel.Text = "Target " & (address \ 2).ToString() & " hit by Player " & player.ToString()
+    End Sub
+
+
+    ' Handles the ParseFailed event raised by UARTController
+    Private Sub testCOM_ParseFailed(reason As String) Handles testCOM.ParseFailed
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() UpdateParseFailedUI(reason))
+        Else
+            UpdateParseFailedUI(reason)
+        End If
+    End Sub
+
+    Private Sub UpdateParseFailedUI(reason As String)
+        ResultLabel.Text = "Parse Failed: " & reason
+    End Sub
+    Private Sub testCOM_CommandAcknowledged(address As Byte) Handles testCOM.CommandAcknowledged
+        If Me.InvokeRequired Then
+            Me.Invoke(Sub() ResultLabel.Text = "Command acknowledged by target " & (address \ 2).ToString())
+        Else
+            ResultLabel.Text = "Command acknowledged by target " & address.ToString()
+        End If
+    End Sub
 End Class

@@ -75,10 +75,13 @@
             TurnsPassedTextBox.Text = postCount
             WinCheck()
         Else
-            'xxx
+            ConstantReadTimer.Stop()
+            wrongTurnTarget = address
+            WrongPlayerTimer.Start()
         End If
         'MsgBox("We hit the blaster")
     End Sub
+    Dim wrongTurnTarget As Integer
 
     Sub Reset()
         PictureBox1.Image = My.Resources.NoIcon
@@ -140,14 +143,7 @@
     End Function
 
 
-
     Sub WinCheck()
-        'blaster testing (delete soon)
-        If TicTacToeTargets(1) = 1 And TicTacToeTargets(2) = 1 Then
-            WinnerPictureBox.Image = My.Resources.BIcon
-            MsgBox("P1 Wins")
-            EndGame()
-        End If
         'Player 1
         If TicTacToeTargets(1) = 1 And TicTacToeTargets(2) = 1 And TicTacToeTargets(3) = 1 Then
             WinnerPictureBox.Image = My.Resources.BIcon
@@ -255,14 +251,14 @@
         ResetButton.Enabled = False
 
         TicTacToeTargets(0) = 1
-        Timer1.Stop()
+        ConstantReadTimer.Stop()
     End Sub
 
     '--------------------------------------------------------------
     'Event Handlers
     Private Sub StartButton_Click(sender As Object, e As EventArgs) Handles StartButton.Click
         ticTacToeCOM.SendI2CEnable(0)
-        Timer1.Start()
+        ConstantReadTimer.Start()
         Reset()
         PictureBox1.Enabled = True
         PictureBox2.Enabled = True
@@ -277,10 +273,10 @@
         StartButton.Enabled = False
         ResetButton.Enabled = True
 
-        'Do Until CInt(PlayerTurnTextBox.Text) > 9
-        'ReadTicTacToeTargets()
-        'WinCheck()
-        'Loop
+        Do Until CInt(PlayerTurnTextBox.Text) > 9
+            ReadTicTacToeTarget()
+            WinCheck()
+        Loop
 
     End Sub
 
@@ -395,14 +391,13 @@
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ResetButton.Click
-        'WinCheck()
-        Timer1.Stop()
+        ConstantReadTimer.Stop()
         ticTacToeCOM.SendI2CDisable(0)
         Reset()
     End Sub
 
     Dim timercounts As Integer = 0
-    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles ConstantReadTimer.Tick
         timercounts = timercounts + 1
 
         'If TimerTestRadioButton.Checked = True Then
@@ -441,5 +436,11 @@
                 TimerTestRadioButton.Checked = False
                 timercounts = 0
         End Select
+    End Sub
+
+    Private Sub WrongPlayerTimer_Tick(sender As Object, e As EventArgs) Handles WrongPlayerTimer.Tick
+        ticTacToeCOM.SendI2CEnable(wrongTurnTarget)
+        WrongPlayerTimer.Stop()
+        ConstantReadTimer.Start()
     End Sub
 End Class

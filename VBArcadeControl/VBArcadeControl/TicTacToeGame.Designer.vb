@@ -42,8 +42,9 @@ Partial Class TicTacToeGame
         Me.Label2 = New System.Windows.Forms.Label()
         Me.WinnerPictureBox = New System.Windows.Forms.PictureBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ConstantReadTimer = New System.Windows.Forms.Timer(Me.components)
         Me.TimerTestRadioButton = New System.Windows.Forms.RadioButton()
+        Me.WrongPlayerTimer = New System.Windows.Forms.Timer(Me.components)
         CType(Me.PictureBox9, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox8, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox7, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -258,9 +259,9 @@ Partial Class TicTacToeGame
         Me.Label3.TabIndex = 18
         Me.Label3.Text = "Winner:"
         '
-        'Timer1
+        'ConstantReadTimer
         '
-        Me.Timer1.Interval = 250
+        Me.ConstantReadTimer.Interval = 200
         '
         'TimerTestRadioButton
         '
@@ -272,6 +273,10 @@ Partial Class TicTacToeGame
         Me.TimerTestRadioButton.TabStop = True
         Me.TimerTestRadioButton.Text = "Timer Test"
         Me.TimerTestRadioButton.UseVisualStyleBackColor = True
+        '
+        'WrongPlayerTimer
+        '
+        Me.WrongPlayerTimer.Interval = 500
         '
         'TicTacToeGame
         '
@@ -335,6 +340,7 @@ Partial Class TicTacToeGame
     Friend WithEvents Label2 As Label
     Friend WithEvents WinnerPictureBox As PictureBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents Timer1 As Timer
+    Friend WithEvents ConstantReadTimer As Timer
     Friend WithEvents TimerTestRadioButton As RadioButton
+    Friend WithEvents WrongPlayerTimer As Timer
 End Class

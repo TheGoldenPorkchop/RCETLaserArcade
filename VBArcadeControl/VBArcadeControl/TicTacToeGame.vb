@@ -1,4 +1,6 @@
-﻿Public Class TicTacToeGame
+﻿Imports System.Net
+
+Public Class TicTacToeGame
     Private WithEvents ticTacToeCOM As UARTController
     Public Sub New(ticTacToeTarget As UARTController)
         ' This call is required by the designer.
@@ -35,6 +37,29 @@
         End If
     End Sub
 
+    Sub PictureBoxPicker(pictureBox As Integer)
+        Select Case pictureBox
+            Case 1
+                PictureBox1.Image = TurnPictureBox.Image
+            Case 2
+                PictureBox2.Image = TurnPictureBox.Image
+            Case 3
+                PictureBox3.Image = TurnPictureBox.Image
+            Case 4
+                PictureBox4.Image = TurnPictureBox.Image
+            Case 5
+                PictureBox5.Image = TurnPictureBox.Image
+            Case 6
+                PictureBox6.Image = TurnPictureBox.Image
+            Case 7
+                PictureBox7.Image = TurnPictureBox.Image
+            Case 8
+                PictureBox8.Image = TurnPictureBox.Image
+            Case 9
+                PictureBox9.Image = TurnPictureBox.Image
+        End Select
+    End Sub
+
     Sub ReadTicTacToeTarget(address As Byte, player As Byte)
         Dim validPlayerTurn As Integer
         Dim preCount As Integer
@@ -47,33 +72,7 @@
         End If
 
         If player = validPlayerTurn Then
-            TicTacToeTargets(address \ 2) = CInt(PlayerTurnTextBox.Text)
-
-            Select Case address \ 2
-                Case 1
-                    PictureBox1.Image = TurnPictureBox.Image
-                Case 2
-                    PictureBox2.Image = TurnPictureBox.Image
-                Case 3
-                    PictureBox3.Image = TurnPictureBox.Image
-                Case 4
-                    PictureBox4.Image = TurnPictureBox.Image
-                Case 5
-                    PictureBox5.Image = TurnPictureBox.Image
-                Case 6
-                    PictureBox6.Image = TurnPictureBox.Image
-                Case 7
-                    PictureBox7.Image = TurnPictureBox.Image
-                Case 8
-                    PictureBox8.Image = TurnPictureBox.Image
-                Case 9
-                    PictureBox9.Image = TurnPictureBox.Image
-            End Select
-
-            preCount = CInt(TurnsPassedTextBox.Text)
-            postCount = Counter(preCount)
-            TurnsPassedTextBox.Text = postCount
-            WinCheck()
+            CheckTicTacToeHit(address \ 2)
         Else
             ConstantReadTimer.Stop()
             wrongTurnTarget = address
@@ -81,6 +80,19 @@
         End If
         'MsgBox("We hit the blaster")
     End Sub
+
+    Sub CheckTicTacToeHit(target As Integer)
+        Dim preCount As Integer
+        Dim postCount As Integer
+        TicTacToeTargets(target) = CInt(PlayerTurnTextBox.Text)
+        PictureBoxPicker(target)
+        preCount = CInt(TurnsPassedTextBox.Text)
+        postCount = Counter(preCount)
+        TurnsPassedTextBox.Text = postCount
+        ticTacToeCOM.SendI2CDisable(target * 2)
+        WinCheck()
+    End Sub
+
     Dim wrongTurnTarget As Integer
 
     Sub Reset()
@@ -272,122 +284,42 @@
 
         StartButton.Enabled = False
         ResetButton.Enabled = True
-
-        Do Until CInt(PlayerTurnTextBox.Text) > 9
-            ReadTicTacToeTarget()
-            WinCheck()
-        Loop
-
     End Sub
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        'TicTacToeTargets(1) = CInt(PlayerTurnTextBox.Text)
-        'PictureBox1.Image = TurnPictureBox.Image
-        'preCount = CInt(TurnsPassedTextBox.Text)
-        'postCount = Counter(preCount)
-        'TurnsPassedTextBox.Text = postCount
-        'WinCheck()
-        ticTacToeCOM.SendI2CRead(2)
-
+        CheckTicTacToeHit(1)
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(2) = CInt(PlayerTurnTextBox.Text)
-        PictureBox2.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(2)
     End Sub
 
     Private Sub PictureBox3_Click(sender As Object, e As EventArgs) Handles PictureBox3.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(3) = CInt(PlayerTurnTextBox.Text)
-        PictureBox3.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(3)
     End Sub
 
     Private Sub PictureBox4_Click(sender As Object, e As EventArgs) Handles PictureBox4.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(4) = CInt(PlayerTurnTextBox.Text)
-        PictureBox4.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(4)
     End Sub
 
     Private Sub PictureBox5_Click(sender As Object, e As EventArgs) Handles PictureBox5.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(5) = CInt(PlayerTurnTextBox.Text)
-        PictureBox5.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(5)
     End Sub
 
     Private Sub PictureBox6_Click(sender As Object, e As EventArgs) Handles PictureBox6.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(6) = CInt(PlayerTurnTextBox.Text)
-        PictureBox6.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(6)
     End Sub
 
     Private Sub PictureBox7_Click(sender As Object, e As EventArgs) Handles PictureBox7.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(7) = CInt(PlayerTurnTextBox.Text)
-        PictureBox7.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(7)
     End Sub
 
     Private Sub PictureBox8_Click(sender As Object, e As EventArgs) Handles PictureBox8.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(8) = CInt(PlayerTurnTextBox.Text)
-        PictureBox8.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(8)
     End Sub
 
     Private Sub PictureBox9_Click(sender As Object, e As EventArgs) Handles PictureBox9.Click
-        Dim preCount As Integer
-        Dim postCount As Integer
-
-        TicTacToeTargets(9) = CInt(PlayerTurnTextBox.Text)
-        PictureBox9.Image = TurnPictureBox.Image
-        preCount = CInt(TurnsPassedTextBox.Text)
-        postCount = Counter(preCount)
-        TurnsPassedTextBox.Text = postCount
-        WinCheck()
+        CheckTicTacToeHit(9)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ResetButton.Click
@@ -399,12 +331,6 @@
     Dim timercounts As Integer = 0
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles ConstantReadTimer.Tick
         timercounts = timercounts + 1
-
-        'If TimerTestRadioButton.Checked = True Then
-        'TimerTestRadioButton.Checked = False
-        'Else
-        'TimerTestRadioButton.Checked = True
-        'End If
 
         Select Case timercounts
             Case 1

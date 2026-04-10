@@ -147,6 +147,12 @@
     <Compile Include="GamePicker.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MemoryGame.Designer.vb">
+      <DependentUpon>MemoryGame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="MemoryGame.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SlaveConfigurationForm.Designer.vb">
       <DependentUpon>SlaveConfigurationForm.vb</DependentUpon>
     </Compile>
@@ -213,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LightningGameForm.resx">
       <DependentUpon>LightningGameForm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemoryGame.resx">
+      <DependentUpon>MemoryGame.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
